@@ -2,7 +2,12 @@ import React from "react";
 
 const Task = ({task, toggleTask, onDelete, onEdit }) => {
 
-    console.log();
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user) {
+        return <p>Please log in to view tasks.</p>; // Display a login prompt if no user is logged in
+    }
+    
     return(
         <div
             className='task-item'

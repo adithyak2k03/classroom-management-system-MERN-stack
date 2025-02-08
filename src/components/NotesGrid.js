@@ -4,9 +4,16 @@ import "../stylesheets/NotesGrid.css";
 const NotesGrid = ({ notes, onEditNote, onDeleteNote }) => {
     const [selectedNote, setSelectedNote] = useState(null);
 
+    const user = JSON.parse(localStorage.getItem("user"));
+
+
     const truncateText = (text, maxLength) =>{
         return text.length > maxLength ? text.substring(0, maxLength)+"...": text;
     };
+
+    if (!user) {
+        return <p>Please log in to view notes.</p>; // Display a login prompt if no user is logged in
+    }
 
     return(
         <>

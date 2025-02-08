@@ -13,6 +13,14 @@ const TaskEditModal = ({task, isOpen, onClose, onSave }) => {
 
     if(!isOpen) return null;
 
+
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user) {
+        return <p>Please log in to view tasks.</p>; // Display a login prompt if no user is logged in
+    }
+
+    
     return(
         <div className="modal-overlay">
             <div className="modal-content">

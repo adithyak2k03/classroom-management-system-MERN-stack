@@ -13,11 +13,9 @@ import {
     addNoteApi,
     editNoteApi,
     deleteNoteApi,
-} from "../services/api";
+} from "../services/NotesApi";
 
 const NoteHomePage = (props) => {
-
-
     const [showAddModal, setShowAddModal] = useState(false);
     const [notes, setNotes] = useState([]);
 
@@ -30,6 +28,8 @@ const NoteHomePage = (props) => {
     const [tags, setTags] = useState([]);
     const [selectedTag, setSelectedTag] = useState("All");
 
+    // Get the logged-in user from localStorage
+    const user = JSON.parse(localStorage.getItem("user"));
 
     const fetchNotes = async () => {
         try {
@@ -46,7 +46,6 @@ const NoteHomePage = (props) => {
     const handleAddNote = async (newNote) => {
         try {
             const savedNote = await addNoteApi(newNote);
-
             setNotes([...notes, savedNote]);
 
             if (!tags.includes(savedNote.tag)) {
@@ -62,9 +61,22 @@ const NoteHomePage = (props) => {
     const handleEditNote = async (updatedNote) => {
         try {
             const savedNote = await editNoteApi(updatedNote);
-            setNotes(
-                notes.map((note) => (note._id === savedNote._id ? savedNote : note))
+            // setNotes(
+            //     notes.map((note) => (note._id === savedNote._id ? savedNote : note))
+            // );
+            // const updatedTags = ["All", ...new Set([...notes.map((note) => note.tag), savedNote.tag])];
+            // setTags(updatedTags);
+
+
+            // Update the notes list
+            const updatedNotes = notes.map((note) =>
+                note._id === savedNote._id ? savedNote : note
             );
+            setNotes(updatedNotes);
+
+            // Recalculate the tags
+            const updatedTags = ["All", ...new Set(updatedNotes.map((note) => note.tag))];
+            setTags(updatedTags);
         } catch (error) {
             console.error("Error updating note", error);
         }
@@ -75,7 +87,15 @@ const NoteHomePage = (props) => {
             const success = await deleteNoteApi(id);
 
             if (success) {
-                setNotes(notes.filter((note) => note._id !== id));
+                // setNotes(notes.filter((note) => note._id !== id));
+
+                const updatedNotes = notes.filter((note) => note._id !== id);
+                setNotes(updatedNotes);
+
+                // Update the tags if the note is deleted
+                const updatedTags = ["All", ...new Set(updatedNotes.map((note) => note.tag))];
+                setTags(updatedTags);
+
                 setShowDeleteModal(false);
             }
         } catch (error) {
@@ -83,7 +103,7 @@ const NoteHomePage = (props) => {
         }
     };
 
-    const handleDeleteClick = (note) =>{
+    const handleDeleteClick = (note) => {
         setNoteToDelete(note);
         setShowDeleteModal(true);
     };
@@ -91,77 +111,73 @@ const NoteHomePage = (props) => {
     const handleEditClick = (note) => {
         setCurrentNote(note);
         setShowEditModal(true);
-        
     };
 
-    useEffect( () => {
+    useEffect(() => {
         fetchNotes();
-    },[]);
-
-    // useEffect( () => {
-    //     console.log(notes);
-    // },[notes]);
+    }, []);
 
     const filteredNotes = selectedTag === "All" ? notes : notes.filter(note => note.tag === selectedTag);
 
-    return(
-        <>
+    return (
+        <div>
             <div className="page-title">
                 <h1>Your Note Book</h1>
+                {user ? (
+                    <p>Welcome, {user.name}!</p> // Display user's name
+                ) : (
+                    <p>You are not logged in. Please log in first.</p>
+                )}
             </div>
 
-            <select
-                className="tag-filter"
-                value = {selectedTag}
-                onChange={(e)=> setSelectedTag(e.target.value)}
-            >
-                {tags.map(tag => (
-                    <option key={tag} value={tag}>{tag}</option>
-                ))}
-            </select>
-            <button className="add-note-btn" onClick={() => setShowAddModal(true) }>
-                    <FontAwesomeIcon icon={faPlus} /> Add Note
-            </button>
+            {user && (
+                <>
+                    <select
+                        className="tag-filter"
+                        value={selectedTag}
+                        onChange={(e) => setSelectedTag(e.target.value)}
+                    >
+                        {tags.map(tag => (
+                            <option key={tag} value={tag}>
+                                {tag}
+                            </option>
+                        ))}
+                    </select>
+                    <button className="add-note-btn" onClick={() => setShowAddModal(true)}>
+                        <FontAwesomeIcon icon={faPlus} /> Add Note
+                    </button>
 
-            {showAddModal &&
-                <NoteAddModal
-                    onClose={()=> setShowAddModal(false)}
-                    onAddNote={handleAddNote}
-                />
-            }
+                    {showAddModal && (
+                        <NoteAddModal
+                            onClose={() => setShowAddModal(false)}
+                            onAddNote={handleAddNote}
+                        />
+                    )}
 
-            <NotesGrid
-                notes={filteredNotes} 
-                onEditNote={handleEditClick}
-                onDeleteNote={handleDeleteClick}
-            />
+                    <NotesGrid
+                        notes={filteredNotes}
+                        onEditNote={handleEditClick}
+                        onDeleteNote={handleDeleteClick}
+                    />
 
-            {showEditModal && (
-                <NoteEditModal
-                    note={currentNote}
-                    onClose={() => setShowEditModal(false)}
-                    onSave={handleEditNote}
-                />
+                    {showEditModal && (
+                        <NoteEditModal
+                            note={currentNote}
+                            onClose={() => setShowEditModal(false)}
+                            onSave={handleEditNote}
+                        />
+                    )}
+
+                    {showDeleteModal && (
+                        <NoteDeleteModal
+                            note={noteToDelete}
+                            onClose={() => setShowDeleteModal(false)}
+                            onConfirm={handleDeleteNote}
+                        />
+                    )}
+                </>
             )}
-
-            {showDeleteModal && (
-                <NoteDeleteModal
-                    note={noteToDelete}
-                    onClose={() => setShowDeleteModal(false)}
-                    onConfirm={handleDeleteNote}
-                />
-            )}
-
-            {/* Grid to show all Notes
-
-            Notes component has (title, description, tag, add button, 
-            and Date Time should be stored in the note) */}
-
-            {/* 
-                viewing note pop up modal
-                edit and delete also has pop up modal
-             */}
-        </>
+        </div>
     );
 };
 

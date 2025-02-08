@@ -11,6 +11,12 @@ const TaskDeleteModal = ({ task, isOpen, onClose, onDelete}) =>{
         onClose();
     };
 
+
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user) {
+        return <p>Please log in to view tasks.</p>; // Display a login prompt if no user is logged in
+    }
     return(
 
         <div className="modal-overlay">

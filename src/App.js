@@ -1,18 +1,36 @@
-// src/App.js
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import HomePage from './pages/HomePage';
 import NoteHomePage from './pages/NoteHomePage';
 import TaskHomePage from './pages/TaskHomePage';
 
 const App = () => {
+  const [user, setUser] = useState(null);
+
+  // Check for user login status from localStorage (or from a global state/context)
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      setUser(JSON.parse(loggedInUser)); // Set user info if available
+    }
+  }, []);
+
+  const PrivateRoute = ({ element }) => {
+    // Redirect to login if no user is found (not logged in)
+    return user ? element : <Navigate to="/" />;
+  };
+
   return (
     <Router>
       <Routes>
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/notes" element={<NoteHomePage />} />
-        <Route path="/tasks" element={<TaskHomePage />} />
-        {/* Add Admin and Profile pages here if needed */}
+        <Route path="/" element={<Login setUser={setUser} />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/dashboard" element={<PrivateRoute element={<HomePage user={user} />} />} />
+        <Route path="/notes" element={<PrivateRoute element={<NoteHomePage user={user} />} />} />
+        <Route path="/tasks" element={<PrivateRoute element={<TaskHomePage user={user} />} />} />
+        {/* Add other routes as needed */}
       </Routes>
     </Router>
   );

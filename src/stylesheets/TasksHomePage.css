@@ -8,7 +8,7 @@ p,ul{
     text-align: center;
     background-color: rebeccapurple;
   }
-  
+
   .input-n-list{
     /* width: 50%; */
     margin: 0 25%; /*left and right margin 50%*/
@@ -30,7 +30,15 @@ p,ul{
     background: yellow;
     flex: 1;
   }
-  
+
+  .input-n-btn .input-field{
+    margin: 10px;
+  }
+
+  .input-n-btn .btn{
+    margin: 10px;
+  }
+
   .task-list{
     display: flex;
     flex-direction: column;
@@ -38,7 +46,7 @@ p,ul{
     background-color: cadetblue;
     list-style: none;
   }
-  
+
 /* -------------------------------Task component ---------------------------- */
 
   .task-item{
@@ -53,11 +61,10 @@ p,ul{
     cursor: pointer;
     color: red;
     background-color: rgb(108, 164, 220);
-
   }
+
   .task-item p.completed {
     text-decoration: line-through;
-
     color: gray;
   }
 
