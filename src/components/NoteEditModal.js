@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import {faTimes} from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const NoteEditModal = ({ note, onClose, onSave}) => {
+const NoteEditModal = ({ user, note, onClose, onSave}) => {
 
     const [title, setTittle] = useState(note.title);
     const [description, setDescription] = useState(note.description);
@@ -11,16 +13,16 @@ const NoteEditModal = ({ note, onClose, onSave}) => {
         onClose();
     };
 
-    const user = JSON.parse(localStorage.getItem("user"));
-
     if (!user) {
-        return <p>Please log in to view tasks.</p>; // Display a login prompt if no user is logged in
+        return <p>Please log in to view tasks.</p>;
     }
 
     return(
         <div className="modal-overlay" onClick={()=> onClose()}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                <button className="close-btn" onClick={onClose}>x</button>
+                <button className="close-btn" onClick={onClose}>
+                    <FontAwesomeIcon icon={faTimes} className="close-icon"/>
+                </button>
                 <h2>Edit Note</h2>
                 <input type="text" value={title} onChange={(e)=> setTittle(e.target.value)}/>
                 <textarea value={description} onChange={(e)=> setDescription(e.target.value)}/>

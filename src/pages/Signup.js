@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { signupUserApi } from "../services/api";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -10,21 +11,17 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:5000/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name, email, password }),
-    });
+    try {
+      const data = await signupUserApi(name, email, password);
 
-    const data = await response.json();
-
-    if (response.ok) {
-      alert("Signup successful! Please login.");
-      navigate("/");
-    } else {
-      alert(data.error || "Signup failed");
+      if (data.message) {
+        alert("Signup successful! Please login.");
+        navigate("/");
+      } else {
+        alert(data.error || "Signup failed");
+      }
+    } catch (error) {
+      alert(error.message);
     }
   };
 

@@ -4,10 +4,10 @@ import { Link, useNavigate } from 'react-router-dom';
 const HomePage = ({ user }) => {
   const navigate = useNavigate();
 
-  // Logout function to remove the user from localStorage and navigate to login page
+
   const handleLogout = () => {
-    localStorage.removeItem("user"); // Clear user from localStorage
-    navigate("/"); // Redirect to login page
+    localStorage.removeItem("user");
+    navigate("/");
   };
 
   return (
@@ -15,7 +15,7 @@ const HomePage = ({ user }) => {
       <h1>Welcome to the Classroom Management System</h1>
       {user ? (
         <div>
-          <p>Welcome, {user.username}!</p> {/* Display user's name or username */}
+          <p>Welcome, {user.name}!</p>
           <div>
             <Link to="/notes">
               <button>Go to Notes</button>

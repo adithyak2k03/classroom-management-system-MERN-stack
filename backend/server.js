@@ -18,24 +18,6 @@ app.use(bodyParser.json());
 
 connectToMongo();
 
-// // Note Schema and Model
-// const noteSchema = new mongoose.Schema({
-//     title: { type: String, required: true },
-//     description: { type: String, required: true },
-//     tag: { type: String, default: "General" },
-//     date: { type: String, default: new Date().toLocaleString() },
-// });
-
-// const Note = mongoose.model("Note", noteSchema);
-
-// // Task Schema and Model
-// const taskSchema = new mongoose.Schema({
-//     text: { type: String, required: true },
-//     completed: { type: Boolean, default: false },
-// });
-
-// const Task = mongoose.model("Task", taskSchema);
-
 const userSchema = new mongoose.Schema({
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
@@ -54,7 +36,8 @@ const noteSchema = new mongoose.Schema({
     title: { type: String, required: true },
     description: { type: String, required: true },
     tag: { type: String, default: "General" },
-    date: { type: String, default: new Date().toLocaleString() },
+    createdDate: { type: Date, default: Date.now }, 
+    updatedDate: { type: Date, default: Date.now },
 });
 
 const Note = mongoose.model("Note", noteSchema);
@@ -159,7 +142,8 @@ app.post("/notes", authenticateUser, async (req, res) => {
             title,
             description,
             tag,
-            date: new Date().toLocaleString(),
+            createdDate: Date.now(),
+            updatedDate: Date.now(),
         });
         await newNote.save();
         res.json(newNote);
@@ -174,11 +158,20 @@ app.put("/notes/:id", authenticateUser, async (req, res) => {
     try {
         const { id } = req.params;
         const { title, description, tag } = req.body;
+
         const updatedNote = await Note.findOneAndUpdate(
             { _id: id, userId: req.user.id },
-            { title, description, tag },
+            {
+                title,
+                description,
+                tag,
+                updatedDate: Date.now()
+            },
             { new: true }
         );
+        if (!updatedNote) {
+            return res.status(404).json({ error: "Note not found or unauthorized" });
+        }
         res.json(updatedNote);
     } catch (error) {
         console.error("Error updating note", error);

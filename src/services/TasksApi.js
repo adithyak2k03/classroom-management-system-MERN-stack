@@ -1,29 +1,22 @@
-// Common API URL for the combined system
 const BASE_URL = "http://localhost:5000";
 
-
-// **Tasks API Endpoints**
 const TASKS_API_URL = `${BASE_URL}/tasks`;
 
-const getToken = () => {
-    const token =  localStorage.getItem("token"); // Assuming the token is stored in localStorage
-    if(token){
-        return token;
-    }
-    else{
+const getValidatedToken = () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+        console.error("No token found in localStorage");
         return null;
     }
+    return token;
 };
-
 
 // Fetch all tasks for the current user
 const fetchTasksApi = async () => {
 
-    const token = getToken();
-    if(!token){
-        console.error("No token found in localStorage");
-        return null;
-    }
+    const token = getValidatedToken();
+    if (!token) return null;
+
     const payload = {
         method: "GET",
         headers: {
@@ -46,21 +39,19 @@ const fetchTasksApi = async () => {
 };
 
 // Add a new task for a specific user
-const addTaskApi = async (userId, text) => {
+const addTaskApi = async (text) => {
     if (!text.trim()) return null;
 
-    const token = getToken();
-    if(!token){
-        console.error("No token found in localStorage");
-        return null;
-    }
+    const token = getValidatedToken();
+    if (!token) return null;
+
     const payload = {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`
         },
-        body: JSON.stringify({ userId, text }),
+        body: JSON.stringify({ text }),
     };
 
     try {
@@ -75,11 +66,8 @@ const addTaskApi = async (userId, text) => {
 // Toggle task completion for a specific user
 const toggleTaskApi = async (id, completed) => {
 
-    const token = getToken();
-    if (!token) {
-        console.error("No token found in localStorage");
-        return null;
-    }
+    const token = getValidatedToken();
+    if (!token) return null;
 
     const payload = {
         method: "PATCH",
@@ -102,11 +90,8 @@ const toggleTaskApi = async (id, completed) => {
 // Edit an existing task for a specific user
 const editTaskApi = async (id, newText) => {
 
-    const token = getToken();
-    if (!token) {
-        console.error("No token found in localStorage");
-        return null;
-    }
+    const token = getValidatedToken();
+    if (!token) return null;
 
     const payload = {
         method: "PATCH",
@@ -129,11 +114,8 @@ const editTaskApi = async (id, newText) => {
 // Delete a task for a specific user
 const deleteTaskApi = async ( id ) => {
 
-    const token = getToken();
-    if (!token) {
-        console.error("No token found in localStorage");
-        return null;
-    }
+    const token = getValidatedToken();
+    if (!token) return null;
 
     const payload = { 
         method: "DELETE",

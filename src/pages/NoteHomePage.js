@@ -15,7 +15,7 @@ import {
     deleteNoteApi,
 } from "../services/NotesApi";
 
-const NoteHomePage = (props) => {
+const NoteHomePage = ({ user }) => {
     const [showAddModal, setShowAddModal] = useState(false);
     const [notes, setNotes] = useState([]);
 
@@ -28,13 +28,13 @@ const NoteHomePage = (props) => {
     const [tags, setTags] = useState([]);
     const [selectedTag, setSelectedTag] = useState("All");
 
-    // Get the logged-in user from localStorage
-    const user = JSON.parse(localStorage.getItem("user"));
-
     const fetchNotes = async () => {
         try {
             const data = await fetchNotesApi();
-            setNotes(data);
+
+            const sortedNotes = data.sort((a, b) => new Date(b.updatedDate) - new Date(a.updatedDate));
+
+            setNotes(sortedNotes);
 
             const uniqueTags = ["All", ...new Set(data.map((note) => note.tag))];
             setTags(uniqueTags);
@@ -72,7 +72,14 @@ const NoteHomePage = (props) => {
             const updatedNotes = notes.map((note) =>
                 note._id === savedNote._id ? savedNote : note
             );
-            setNotes(updatedNotes);
+
+            const sortedNotes = updatedNotes.sort(
+                (a, b) => new Date(b.updatedDate) - new Date(a.updatedDate)
+            );
+    
+            setNotes(sortedNotes);
+
+            // setNotes(updatedNotes);
 
             // Recalculate the tags
             const updatedTags = ["All", ...new Set(updatedNotes.map((note) => note.tag))];
@@ -124,7 +131,7 @@ const NoteHomePage = (props) => {
             <div className="page-title">
                 <h1>Your Note Book</h1>
                 {user ? (
-                    <p>Welcome, {user.name}!</p> // Display user's name
+                    <p>Welcome, {user.name}!</p>
                 ) : (
                     <p>You are not logged in. Please log in first.</p>
                 )}
@@ -149,12 +156,14 @@ const NoteHomePage = (props) => {
 
                     {showAddModal && (
                         <NoteAddModal
+                            user={user}
                             onClose={() => setShowAddModal(false)}
                             onAddNote={handleAddNote}
                         />
                     )}
 
                     <NotesGrid
+                        user={user}
                         notes={filteredNotes}
                         onEditNote={handleEditClick}
                         onDeleteNote={handleDeleteClick}
@@ -162,6 +171,7 @@ const NoteHomePage = (props) => {
 
                     {showEditModal && (
                         <NoteEditModal
+                            user={user}
                             note={currentNote}
                             onClose={() => setShowEditModal(false)}
                             onSave={handleEditNote}
@@ -170,6 +180,7 @@ const NoteHomePage = (props) => {
 
                     {showDeleteModal && (
                         <NoteDeleteModal
+                            user={user}
                             note={noteToDelete}
                             onClose={() => setShowDeleteModal(false)}
                             onConfirm={handleDeleteNote}

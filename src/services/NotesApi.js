@@ -1,28 +1,21 @@
-// Common API URL for the combined system
 const BASE_URL = "http://localhost:5000";
 
-// **Notes API Endpoints**
 const NOTES_API_URL = `${BASE_URL}/notes`;
 
-
-const getToken = () => {
-    const token =  localStorage.getItem("token"); // Assuming the token is stored in localStorage
-    if(token){
-        return token;
-    }
-    else{
+const getValidatedToken = () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+        console.error("No token found in localStorage");
         return null;
     }
+    return token;
 };
 
 // Fetch all notes for the current user
 const fetchNotesApi = async () => {
 
-    const token = getToken();
-    if(!token){
-        console.error("No token found in localStorage");
-        return null;
-    }
+    const token = getValidatedToken();
+    if (!token) return null;
 
     const payload = {
         method: "GET",
@@ -37,7 +30,7 @@ const fetchNotesApi = async () => {
             return await response.json();
         } else{
             console.error("Failed to fetch notes", response.statusText);
-            return[]; 
+            return []; 
         }
     } catch (error) {
         console.error("Error fetching notes", error);
@@ -48,11 +41,8 @@ const fetchNotesApi = async () => {
 // Add a new note for a specific user
 const addNoteApi = async (newNote) => {
 
-    const token = getToken();
-    if(!token){
-        console.error("No token found in localStorage");
-        return null;
-    }
+    const token = getValidatedToken();
+    if (!token) return null;
 
     const payload = {
         method: "POST",
@@ -80,11 +70,8 @@ const addNoteApi = async (newNote) => {
 // Edit an existing note for a specific user
 const editNoteApi = async (updatedNote) => {
     
-    const token = getToken();
-    if(!token){
-        console.error("No token found in localStorage");
-        return null;
-    }
+    const token = getValidatedToken();
+    if (!token) return null;
 
     const payload = {
         method: "PUT",
@@ -112,11 +99,8 @@ const editNoteApi = async (updatedNote) => {
 // Delete a note for a specific user
 const deleteNoteApi = async (id) => {
 
-    const token = getToken();
-    if(!token){
-        console.error("No token found in localStorage");
-        return null;
-    }
+    const token = getValidatedToken();
+    if (!token) return null;
 
     const payload = {
         method: "DELETE",

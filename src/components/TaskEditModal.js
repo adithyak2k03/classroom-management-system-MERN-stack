@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-const TaskEditModal = ({task, isOpen, onClose, onSave }) => {
+const TaskEditModal = ({ user, task, isOpen, onClose, onSave }) => {
 
     const [newTask, setNewTask] = useState(task?.text || "");
 
@@ -13,24 +13,22 @@ const TaskEditModal = ({task, isOpen, onClose, onSave }) => {
 
     if(!isOpen) return null;
 
-
-    const user = JSON.parse(localStorage.getItem("user"));
-
     if (!user) {
-        return <p>Please log in to view tasks.</p>; // Display a login prompt if no user is logged in
+        return <p>Please log in to view tasks.</p>;
     }
 
     
     return(
         <div className="modal-overlay">
             <div className="modal-content">
-                <FontAwesomeIcon icon={faTimes} className="close-icon" onClick={onClose} />
+                <button  className="close-btn" onClick={onClose} >
+                    <FontAwesomeIcon icon={faTimes}/>
+                </button>
                 <h2>Edit Task</h2>
                 <input
                     type="text"
                     value={newTask}
                     onChange={(e)=> setNewTask(e.target.value)}
-                    // placeholder="Enter new task name"
                     placeholder={task.text}
                 />
                 <div>

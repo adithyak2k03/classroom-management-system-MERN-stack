@@ -11,24 +11,21 @@ import {
   deleteTaskApi } from "../services/TasksApi";
 
 
-const TaskHomePage = (props) => {
+const TaskHomePage = ({ user }) => {
   const [tasks, setTasks] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [currentTask, setCurrentTask] = useState(null);
 
-  // Get the logged-in user from localStorage
-  const user = JSON.parse(localStorage.getItem("user"));
-  const userId = user?.userId;
 
   const handleFetchTasks = async () => {
-    const data = await fetchTasksApi(userId);
+    const data = await fetchTasksApi();
     setTasks(data);
   };
 
   const handleAddTask = async () => {
-    const newTask = await addTaskApi(userId, inputValue);
+    const newTask = await addTaskApi(inputValue);
     if (newTask) {
       setTasks((prevTasks) => [newTask, ...prevTasks]);
       setInputValue("");
@@ -81,7 +78,7 @@ const TaskHomePage = (props) => {
       <div className="page-title">
         <h1>TODO LIST</h1>
         {user ? (
-          <p>Welcome, {user.name}!</p> // Display user's name
+          <p>Welcome, {user.name}!</p>
         ) : (
           <p>You are not logged in. Please log in first.</p>
         )}
@@ -110,6 +107,7 @@ const TaskHomePage = (props) => {
             {tasks.map((task) => (
               <li key={task._id}>
                 <Task
+                  user={user}
                   task={task}
                   toggleTask={handleToggleTask}
                   onEdit={() => openEditModal(task)}
@@ -123,6 +121,7 @@ const TaskHomePage = (props) => {
 
       {isEditModalOpen && (
         <TaskEditModal
+          user={user}
           task={currentTask}
           isOpen={isEditModalOpen}
           onClose={closeModals}
@@ -132,6 +131,7 @@ const TaskHomePage = (props) => {
 
       {isDeleteModalOpen && (
         <TaskDeleteModal
+          user={user}
           task={currentTask}
           isOpen={isDeleteModalOpen}
           onClose={closeModals}

@@ -9,11 +9,10 @@ import TaskHomePage from './pages/TaskHomePage';
 const App = () => {
   const [user, setUser] = useState(null);
 
-  // Check for user login status from localStorage (or from a global state/context)
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user");
     if (loggedInUser) {
-      setUser(JSON.parse(loggedInUser)); // Set user info if available
+      setUser(JSON.parse(loggedInUser));
     }
   }, []);
 

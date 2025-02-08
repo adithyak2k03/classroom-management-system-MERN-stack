@@ -3,7 +3,7 @@ import {faTimes} from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../stylesheets/NotesAddModal.css"
 
-const NoteAddModal = ( {onClose, onAddNote} ) => {
+const NoteAddModal = ( {user, onClose, onAddNote} ) => {
 
     const [note, setNote] = useState({
         title: "",
@@ -23,20 +23,16 @@ const NoteAddModal = ( {onClose, onAddNote} ) => {
         onAddNote(note);
     }
 
-    const user = JSON.parse(localStorage.getItem("user"));
-
     if (!user) {
-        return <p>Please log in to view tasks.</p>; // Display a login prompt if no user is logged in
+        return <p>Please log in to view tasks.</p>;
     }
     
     return(
         <div className="modal-overlay" onClick={()=> onClose()}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                <FontAwesomeIcon
-                    icon={faTimes}
-                    className="close-icon"
-                    onClick={onClose}
-                />
+                <button  className="close-btn" onClick={onClose} >
+                    <FontAwesomeIcon icon={faTimes} className="close-icon" onClick={onClose} />
+                </button>
                 <h2> Add a Note</h2>
                 <input
                     type="text"
