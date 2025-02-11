@@ -48,6 +48,8 @@ const taskSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
   text: { type: String, required: true },
   completed: { type: Boolean, default: false },
+  createdDate: { type: Date, default: Date.now },
+  updatedDate: { type: Date, default: Date.now },
 });
 
 const Task = mongoose.model("Task", taskSchema);
@@ -137,7 +139,7 @@ app.post("/login", async (req, res) => {
     const token = jwt.sign(
       { user: { id: user._id, role: user.role } },
       JWT_SECRET,
-      { expiresIn: "1h" },
+      { expiresIn: "1h" }
     );
     res.json({
       token,
@@ -202,7 +204,7 @@ app.put("/notes/:id", authenticateUser, async (req, res) => {
         tag,
         updatedDate: Date.now(),
       },
-      { new: true },
+      { new: true }
     );
     if (!updatedNote) {
       return res.status(404).json({ error: "Note not found or unauthorized" });
@@ -244,7 +246,12 @@ app.get("/tasks", authenticateUser, async (req, res) => {
 app.post("/tasks", authenticateUser, async (req, res) => {
   try {
     const { text } = req.body;
-    const newTask = new Task({ userId: req.user.id, text });
+    const newTask = new Task({
+      userId: req.user.id,
+      text,
+      createdDate: Date.now(),
+      updatedDate: Date.now(),
+    });
     await newTask.save();
     res.status(201).json(newTask);
   } catch (error) {
@@ -262,11 +269,12 @@ app.patch("/tasks/:id", authenticateUser, async (req, res) => {
     const updateFields = {};
     if (text !== undefined) updateFields.text = text;
     if (completed !== undefined) updateFields.completed = completed;
+    updateFields.updatedDate = Date.now();
 
     const updatedTask = await Task.findOneAndUpdate(
       { _id: id, userId: req.user.id },
       { $set: updateFields },
-      { new: true },
+      { new: true }
     );
 
     res.json(updatedTask);
@@ -292,5 +300,5 @@ app.delete("/tasks/:id", authenticateUser, async (req, res) => {
 // Start Server
 // ---------------------------
 app.listen(PORT, () =>
-  console.log(`Server running on http://localhost:${PORT}`),
+  console.log(`Server running on http://localhost:${PORT}`)
 );

@@ -2,9 +2,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  transition:
-    background-color 0.3s,
-    color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 body.dark-mode {
@@ -37,9 +35,7 @@ body.dark-mode {
   text-decoration: none;
   color: black;
   width: 250px;
-  transition:
-    transform 0.3s,
-    box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .card:hover {

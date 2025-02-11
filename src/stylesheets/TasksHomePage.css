@@ -38,7 +38,7 @@ ul {
   flex-direction: column;
   gap: 0.5rem;
   background-color: cadetblue;
-  list-style: none;
+  list-style: outside;
 }
 
 /* -------------------------------Task component ---------------------------- */

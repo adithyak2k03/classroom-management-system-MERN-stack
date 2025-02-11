@@ -7,6 +7,7 @@ import {
   faSun,
   faUser,
   faSignOutAlt,
+  faChalkboardTeacher,
 } from "@fortawesome/free-solid-svg-icons";
 import "../stylesheets/PageHeader.css";
 import { UserContext } from "../context/UserContext";
@@ -34,11 +35,14 @@ const PageHeader = ({ title }) => {
 
   return (
     <div className="page-title">
-      <div>
+      <div className="d-flex flex-row align-items-center">
         <Link to="/dashboard" className="logo">
-          <img src="/path-to-your-logo.png" alt="Logo" />
+          <FontAwesomeIcon
+            className="logo-element"
+            icon={faChalkboardTeacher}
+          />
         </Link>
-        <p>Hi {user.name}</p>
+        <h4>Hi {user.name}!</h4>
       </div>
 
       <h1>{title}</h1>

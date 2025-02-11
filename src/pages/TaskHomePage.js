@@ -25,7 +25,16 @@ const TaskHomePage = () => {
 
   const handleFetchTasks = async () => {
     const data = await fetchTasksApi();
-    setTasks(data);
+
+    // Sort tasks: Incomplete first, then by updatedDate
+    const sortedTasks = data.sort((a, b) => {
+      if (a.completed === b.completed) {
+        return new Date(b.updatedDate) - new Date(a.updatedDate);
+      }
+      return a.completed - b.completed;
+    });
+
+    setTasks(sortedTasks);
   };
 
   const handleAddTask = async () => {
@@ -39,21 +48,39 @@ const TaskHomePage = () => {
   const handleToggleTask = async (id) => {
     const updatedTask = await toggleTaskApi(
       id,
-      !tasks.find((t) => t._id === id).completed,
+      !tasks.find((t) => t._id === id).completed
     );
+
     if (updatedTask) {
-      setTasks((prevTasks) =>
-        prevTasks.map((t) => (t._id === id ? updatedTask : t)),
-      );
+      const updatedTasks = tasks.map((t) => (t._id === id ? updatedTask : t));
+
+      // Sort tasks: Incomplete first, then by updatedDate
+      const sortedTasks = updatedTasks.sort((a, b) => {
+        if (a.completed === b.completed) {
+          return new Date(b.updatedDate) - new Date(a.updatedDate);
+        }
+        return a.completed - b.completed;
+      });
+
+      setTasks(sortedTasks);
     }
   };
 
   const handleEditTask = async (id, newText) => {
     const updatedTask = await editTaskApi(id, newText);
+
     if (updatedTask) {
-      setTasks((prevTasks) =>
-        prevTasks.map((t) => (t._id === id ? updatedTask : t)),
-      );
+      const updatedTasks = tasks.map((t) => (t._id === id ? updatedTask : t));
+
+      // Sort tasks: Incomplete first, then by updatedDate
+      const sortedTasks = updatedTasks.sort((a, b) => {
+        if (a.completed === b.completed) {
+          return new Date(b.updatedDate) - new Date(a.updatedDate);
+        }
+        return a.completed - b.completed;
+      });
+
+      setTasks(sortedTasks);
     }
   };
 
