@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import React, { useContext } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import HomePage from './pages/HomePage';
-import NoteHomePage from './pages/NoteHomePage';
-import TaskHomePage from './pages/TaskHomePage';
+import HomePage from "./pages/HomePage";
+import NoteHomePage from "./pages/NoteHomePage";
+import TaskHomePage from "./pages/TaskHomePage";
+import Profile from "./pages/Profile";
+import { UserContext } from "./context/UserContext";
 
 const App = () => {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const loggedInUser = localStorage.getItem("user");
-    if (loggedInUser) {
-      setUser(JSON.parse(loggedInUser));
-    }
-  }, []);
+  const { user } = useContext(UserContext);
 
   const PrivateRoute = ({ element }) => {
     // Redirect to login if no user is found (not logged in)
@@ -24,11 +24,24 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login setUser={setUser} />} />
+        <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/dashboard" element={<PrivateRoute element={<HomePage user={user} />} />} />
-        <Route path="/notes" element={<PrivateRoute element={<NoteHomePage user={user} />} />} />
-        <Route path="/tasks" element={<PrivateRoute element={<TaskHomePage user={user} />} />} />
+        <Route
+          path="/dashboard"
+          element={<PrivateRoute element={<HomePage />} />}
+        />
+        <Route
+          path="/profile"
+          element={<PrivateRoute element={<Profile />} />}
+        />
+        <Route
+          path="/notes"
+          element={<PrivateRoute element={<NoteHomePage />} />}
+        />
+        <Route
+          path="/tasks"
+          element={<PrivateRoute element={<TaskHomePage />} />}
+        />
         {/* Add other routes as needed */}
       </Routes>
     </Router>

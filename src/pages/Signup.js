@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signupUserApi } from "../services/api";
+import "../stylesheets/Signup.css";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -26,14 +27,15 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSignup}>
+    <div className="signup-container">
+      <h1 className="signup-title">Sign Up</h1>
+      <form onSubmit={handleSignup} className="signup-form">
         <input
           type="text"
           placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          className="signup-input"
           required
         />
         <input
@@ -41,6 +43,7 @@ const Signup = () => {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          className="signup-input"
           required
         />
         <input
@@ -48,12 +51,18 @@ const Signup = () => {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          className="signup-input"
           required
         />
-        <button type="submit">Sign Up</button>
+        <button type="submit" className="signup-button">
+          Sign Up
+        </button>
       </form>
-      <p>
-        Already have an account? <a href="/">Login</a>
+      <p className="signup-text">
+        Already have an account?{" "}
+        <a href="/" className="login-link">
+          Login
+        </a>
       </p>
     </div>
   );

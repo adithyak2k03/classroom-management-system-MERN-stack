@@ -1,195 +1,203 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "../stylesheets/NotesHomePage.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-
 import NoteAddModal from "../components/NoteAddModal";
 import NotesGrid from "../components/NotesGrid";
 import NoteEditModal from "../components/NoteEditModal";
 import NoteDeleteModal from "../components/NoteDeleteModal";
 
 import {
-    fetchNotesApi,
-    addNoteApi,
-    editNoteApi,
-    deleteNoteApi,
+  fetchNotesApi,
+  addNoteApi,
+  editNoteApi,
+  deleteNoteApi,
 } from "../services/NotesApi";
+import PageHeader from "../components/PageHeader";
+import { UserContext } from "../context/UserContext";
 
-const NoteHomePage = ({ user }) => {
-    const [showAddModal, setShowAddModal] = useState(false);
-    const [notes, setNotes] = useState([]);
+const NoteHomePage = () => {
+  const { user } = useContext(UserContext);
 
-    const [showEditModal, setShowEditModal] = useState(false);
-    const [currentNote, setCurrentNote] = useState(null);
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [notes, setNotes] = useState([]);
 
-    const [showDeleteModal, setShowDeleteModal] = useState(false);
-    const [noteToDelete, setNoteToDelete] = useState(null);
-    
-    const [tags, setTags] = useState([]);
-    const [selectedTag, setSelectedTag] = useState("All");
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [currentNote, setCurrentNote] = useState(null);
 
-    const fetchNotes = async () => {
-        try {
-            const data = await fetchNotesApi();
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [noteToDelete, setNoteToDelete] = useState(null);
 
-            const sortedNotes = data.sort((a, b) => new Date(b.updatedDate) - new Date(a.updatedDate));
+  const [tags, setTags] = useState([]);
+  const [selectedTag, setSelectedTag] = useState("All");
 
-            setNotes(sortedNotes);
+  const fetchNotes = async () => {
+    try {
+      const data = await fetchNotesApi();
 
-            const uniqueTags = ["All", ...new Set(data.map((note) => note.tag))];
-            setTags(uniqueTags);
-        } catch (error) {
-            console.error("Error fetching notes", error);
-        }
-    };
+      const sortedNotes = data.sort(
+        (a, b) => new Date(b.updatedDate) - new Date(a.updatedDate),
+      );
 
-    const handleAddNote = async (newNote) => {
-        try {
-            const savedNote = await addNoteApi(newNote);
-            setNotes([...notes, savedNote]);
+      setNotes(sortedNotes);
 
-            if (!tags.includes(savedNote.tag)) {
-                setTags([...tags, savedNote.tag]);
-            }
+      const uniqueTags = ["All", ...new Set(data.map((note) => note.tag))];
+      setTags(uniqueTags);
+    } catch (error) {
+      console.error("Error fetching notes", error);
+    }
+  };
 
-            setShowAddModal(false);
-        } catch (error) {
-            console.error("Error adding note", error);
-        }
-    };
+  const handleAddNote = async (newNote) => {
+    try {
+      const savedNote = await addNoteApi(newNote);
+      setNotes([...notes, savedNote]);
 
-    const handleEditNote = async (updatedNote) => {
-        try {
-            const savedNote = await editNoteApi(updatedNote);
-            // setNotes(
-            //     notes.map((note) => (note._id === savedNote._id ? savedNote : note))
-            // );
-            // const updatedTags = ["All", ...new Set([...notes.map((note) => note.tag), savedNote.tag])];
-            // setTags(updatedTags);
+      if (!tags.includes(savedNote.tag)) {
+        setTags([...tags, savedNote.tag]);
+      }
 
+      setShowAddModal(false);
+    } catch (error) {
+      console.error("Error adding note", error);
+    }
+  };
 
-            // Update the notes list
-            const updatedNotes = notes.map((note) =>
-                note._id === savedNote._id ? savedNote : note
-            );
+  const handleEditNote = async (updatedNote) => {
+    try {
+      const savedNote = await editNoteApi(updatedNote);
+      // setNotes(
+      //     notes.map((note) => (note._id === savedNote._id ? savedNote : note))
+      // );
+      // const updatedTags = ["All", ...new Set([...notes.map((note) => note.tag), savedNote.tag])];
+      // setTags(updatedTags);
 
-            const sortedNotes = updatedNotes.sort(
-                (a, b) => new Date(b.updatedDate) - new Date(a.updatedDate)
-            );
-    
-            setNotes(sortedNotes);
+      // Update the notes list
+      const updatedNotes = notes.map((note) =>
+        note._id === savedNote._id ? savedNote : note,
+      );
 
-            // setNotes(updatedNotes);
+      const sortedNotes = updatedNotes.sort(
+        (a, b) => new Date(b.updatedDate) - new Date(a.updatedDate),
+      );
 
-            // Recalculate the tags
-            const updatedTags = ["All", ...new Set(updatedNotes.map((note) => note.tag))];
-            setTags(updatedTags);
-        } catch (error) {
-            console.error("Error updating note", error);
-        }
-    };
+      setNotes(sortedNotes);
 
-    const handleDeleteNote = async (id) => {
-        try {
-            const success = await deleteNoteApi(id);
+      // setNotes(updatedNotes);
 
-            if (success) {
-                // setNotes(notes.filter((note) => note._id !== id));
+      // Recalculate the tags
+      const updatedTags = [
+        "All",
+        ...new Set(updatedNotes.map((note) => note.tag)),
+      ];
+      setTags(updatedTags);
+    } catch (error) {
+      console.error("Error updating note", error);
+    }
+  };
 
-                const updatedNotes = notes.filter((note) => note._id !== id);
-                setNotes(updatedNotes);
+  const handleDeleteNote = async (id) => {
+    try {
+      const success = await deleteNoteApi(id);
 
-                // Update the tags if the note is deleted
-                const updatedTags = ["All", ...new Set(updatedNotes.map((note) => note.tag))];
-                setTags(updatedTags);
+      if (success) {
+        // setNotes(notes.filter((note) => note._id !== id));
 
-                setShowDeleteModal(false);
-            }
-        } catch (error) {
-            console.error("Error deleting note", error);
-        }
-    };
+        const updatedNotes = notes.filter((note) => note._id !== id);
+        setNotes(updatedNotes);
 
-    const handleDeleteClick = (note) => {
-        setNoteToDelete(note);
-        setShowDeleteModal(true);
-    };
+        // Update the tags if the note is deleted
+        const updatedTags = [
+          "All",
+          ...new Set(updatedNotes.map((note) => note.tag)),
+        ];
+        setTags(updatedTags);
 
-    const handleEditClick = (note) => {
-        setCurrentNote(note);
-        setShowEditModal(true);
-    };
+        setShowDeleteModal(false);
+      }
+    } catch (error) {
+      console.error("Error deleting note", error);
+    }
+  };
 
-    useEffect(() => {
-        fetchNotes();
-    }, []);
+  const handleDeleteClick = (note) => {
+    setNoteToDelete(note);
+    setShowDeleteModal(true);
+  };
 
-    const filteredNotes = selectedTag === "All" ? notes : notes.filter(note => note.tag === selectedTag);
+  const handleEditClick = (note) => {
+    setCurrentNote(note);
+    setShowEditModal(true);
+  };
 
-    return (
-        <div>
-            <div className="page-title">
-                <h1>Your Note Book</h1>
-                {user ? (
-                    <p>Welcome, {user.name}!</p>
-                ) : (
-                    <p>You are not logged in. Please log in first.</p>
-                )}
-            </div>
+  useEffect(() => {
+    fetchNotes();
+  }, []);
 
-            {user && (
-                <>
-                    <select
-                        className="tag-filter"
-                        value={selectedTag}
-                        onChange={(e) => setSelectedTag(e.target.value)}
-                    >
-                        {tags.map(tag => (
-                            <option key={tag} value={tag}>
-                                {tag}
-                            </option>
-                        ))}
-                    </select>
-                    <button className="add-note-btn" onClick={() => setShowAddModal(true)}>
-                        <FontAwesomeIcon icon={faPlus} /> Add Note
-                    </button>
+  const filteredNotes =
+    selectedTag === "All"
+      ? notes
+      : notes.filter((note) => note.tag === selectedTag);
 
-                    {showAddModal && (
-                        <NoteAddModal
-                            user={user}
-                            onClose={() => setShowAddModal(false)}
-                            onAddNote={handleAddNote}
-                        />
-                    )}
+  return (
+    <div>
+      <PageHeader title={"Your Notes"} />
+      {user && (
+        <>
+          <select
+            className="tag-filter"
+            value={selectedTag}
+            onChange={(e) => setSelectedTag(e.target.value)}
+          >
+            {tags.map((tag) => (
+              <option key={tag} value={tag}>
+                {tag}
+              </option>
+            ))}
+          </select>
+          <button
+            className="add-note-btn"
+            onClick={() => setShowAddModal(true)}
+          >
+            <FontAwesomeIcon icon={faPlus} /> Add Note
+          </button>
 
-                    <NotesGrid
-                        user={user}
-                        notes={filteredNotes}
-                        onEditNote={handleEditClick}
-                        onDeleteNote={handleDeleteClick}
-                    />
+          {showAddModal && (
+            <NoteAddModal
+              user={user}
+              onClose={() => setShowAddModal(false)}
+              onAddNote={handleAddNote}
+            />
+          )}
 
-                    {showEditModal && (
-                        <NoteEditModal
-                            user={user}
-                            note={currentNote}
-                            onClose={() => setShowEditModal(false)}
-                            onSave={handleEditNote}
-                        />
-                    )}
+          <NotesGrid
+            user={user}
+            notes={filteredNotes}
+            onEditNote={handleEditClick}
+            onDeleteNote={handleDeleteClick}
+          />
 
-                    {showDeleteModal && (
-                        <NoteDeleteModal
-                            user={user}
-                            note={noteToDelete}
-                            onClose={() => setShowDeleteModal(false)}
-                            onConfirm={handleDeleteNote}
-                        />
-                    )}
-                </>
-            )}
-        </div>
-    );
+          {showEditModal && (
+            <NoteEditModal
+              user={user}
+              note={currentNote}
+              onClose={() => setShowEditModal(false)}
+              onSave={handleEditNote}
+            />
+          )}
+
+          {showDeleteModal && (
+            <NoteDeleteModal
+              user={user}
+              note={noteToDelete}
+              onClose={() => setShowDeleteModal(false)}
+              onConfirm={handleDeleteNote}
+            />
+          )}
+        </>
+      )}
+    </div>
+  );
 };
 
 export default NoteHomePage;

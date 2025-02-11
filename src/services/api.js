@@ -32,8 +32,4 @@ const signupUserApi = async (name, email, password) => {
   }
 };
 
-
-export {
-    loginUserApi,
-    signupUserApi
-};
+export { loginUserApi, signupUserApi };

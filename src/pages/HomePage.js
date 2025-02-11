@@ -1,43 +1,29 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React /*,{ useContext }*/ from "react";
+import { Link } from "react-router-dom";
+import PageHeader from "../components/PageHeader";
+import "../stylesheets/HomePage.css";
+// import { UserContext } from "../context/UserContext";
 
-const HomePage = ({ user }) => {
-  const navigate = useNavigate();
-
-
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    navigate("/");
-  };
-
+const HomePage = () => {
+  // const { user } = useContext(UserContext);
   return (
-    <div>
-      <h1>Welcome to the Classroom Management System</h1>
-      {user ? (
-        <div>
-          <p>Welcome, {user.name}!</p>
-          <div>
-            <Link to="/notes">
-              <button>Go to Notes</button>
-            </Link>
-          </div>
-          <div>
-            <Link to="/tasks">
-              <button>Go to To-Do List</button>
-            </Link>
-          </div>
-          <div>
-            <button onClick={handleLogout}>Logout</button>
-          </div>
-        </div>
-      ) : (
-        <div>
-          <p>You are not logged in. Please log in first.</p>
-          <Link to="/">
-            <button>Go to Login</button>
+    <div className={"homepage-container "}>
+      <PageHeader title={"Classroom Management Software"} />
+      <main className="homepage-main">
+        <div className="card-container">
+          <Link to="/notes" className="card">
+            <h2>Notes</h2>
+
+            <p>Manage your classroom notes efficiently.</p>
+          </Link>
+
+          <Link to="/tasks" className="card">
+            <h2>To-Do List</h2>
+
+            <p>Organize tasks for better productivity.</p>
           </Link>
         </div>
-      )}
+      </main>
     </div>
   );
 };

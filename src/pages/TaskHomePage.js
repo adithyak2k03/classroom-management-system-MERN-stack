@@ -1,23 +1,27 @@
-import React, { useEffect, useState } from "react";
-import "../stylesheets/TasksHomePage.css";
+import React, { useEffect, useState, useContext } from "react";
 import Task from "../components/Task";
 import TaskEditModal from "../components/TaskEditModal";
 import TaskDeleteModal from "../components/TaskDeleteModal";
-import { 
+import {
   fetchTasksApi,
   addTaskApi,
   toggleTaskApi,
   editTaskApi,
-  deleteTaskApi } from "../services/TasksApi";
+  deleteTaskApi,
+} from "../services/TasksApi";
 
+import "../stylesheets/TasksHomePage.css";
+import PageHeader from "../components/PageHeader";
+import { UserContext } from "../context/UserContext";
 
-const TaskHomePage = ({ user }) => {
+const TaskHomePage = () => {
+  const { user } = useContext(UserContext);
+
   const [tasks, setTasks] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [currentTask, setCurrentTask] = useState(null);
-
 
   const handleFetchTasks = async () => {
     const data = await fetchTasksApi();
@@ -33,16 +37,23 @@ const TaskHomePage = ({ user }) => {
   };
 
   const handleToggleTask = async (id) => {
-    const updatedTask = await toggleTaskApi(id, !tasks.find((t) => t._id === id).completed);
+    const updatedTask = await toggleTaskApi(
+      id,
+      !tasks.find((t) => t._id === id).completed,
+    );
     if (updatedTask) {
-      setTasks((prevTasks) => prevTasks.map((t) => (t._id === id ? updatedTask : t)));
+      setTasks((prevTasks) =>
+        prevTasks.map((t) => (t._id === id ? updatedTask : t)),
+      );
     }
   };
 
   const handleEditTask = async (id, newText) => {
     const updatedTask = await editTaskApi(id, newText);
     if (updatedTask) {
-      setTasks((prevTasks) => prevTasks.map((t) => (t._id === id ? updatedTask : t)));
+      setTasks((prevTasks) =>
+        prevTasks.map((t) => (t._id === id ? updatedTask : t)),
+      );
     }
   };
 
@@ -75,14 +86,7 @@ const TaskHomePage = ({ user }) => {
 
   return (
     <div>
-      <div className="page-title">
-        <h1>TODO LIST</h1>
-        {user ? (
-          <p>Welcome, {user.name}!</p>
-        ) : (
-          <p>You are not logged in. Please log in first.</p>
-        )}
-      </div>
+      <PageHeader title={"Todo List"} />
 
       {user && (
         <div className="input-n-list">
