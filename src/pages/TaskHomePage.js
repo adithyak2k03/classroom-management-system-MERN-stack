@@ -10,9 +10,9 @@ import {
   deleteTaskApi,
 } from "../services/TasksApi";
 
-import "../stylesheets/TasksHomePage.css";
 import PageHeader from "../components/PageHeader";
 import { UserContext } from "../context/UserContext";
+import "../stylesheets/TasksHomePage.css";
 
 const TaskHomePage = () => {
   const { user } = useContext(UserContext);

@@ -1,0 +1,165 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  background-color: #f5ebe0;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode .modal-content {
+  background-color: #3e2723;
+  color: #f5ebe0;
+}
+
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #6c757d;
+  transition: color 0.3s;
+}
+
+.close-icon:hover {
+  color: #d32f2f;
+}
+
+body.dark-mode .close-icon {
+  color: #f5ebe0;
+}
+
+h2 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.notes.modal-content input,
+textarea {
+  width: 100%;
+  margin: unset;
+  margin-bottom: 1.5rem !important;
+  padding: 0.8rem;
+  border: 2px solid #ccb69b;
+  border-radius: 8px;
+  background-color: #fffaf3;
+  box-sizing: border-box;
+  font-size: 1rem;
+  transition: border 0.3s, background-color 0.3s, color 0.3s !important;
+}
+
+textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+body.dark-mode input,
+body.dark-mode textarea {
+  background-color: #4e342e;
+  border: 1px solid #795548;
+  color: #f5ebe0;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.2s ease-in-out;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.add-btn,
+.btn-primary {
+  background: #6d4c41;
+  color: #fff;
+}
+
+.add-btn:hover,
+.btn-primary:hover {
+  background: #5d4037;
+}
+
+body.dark-mode .add-btn,
+body.dark-mode .btn-primary {
+  background: #a1887f;
+  color: #3e2723;
+}
+
+body.dark-mode .add-btn:hover,
+body.dark-mode .btn-primary:hover {
+  background: #8d6e63;
+}
+
+.btn-danger {
+  background: #d32f2f;
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background: #b71c1c;
+}
+
+body.dark-mode .btn-danger {
+  background: #ef5350;
+  color: #3e2723;
+}
+
+body.dark-mode .btn-danger:hover {
+  background: #e53935;
+}
+
+.btn-secondary {
+  background: #8d6e63;
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background: #6d4c41;
+}
+
+body.dark-mode .btn-secondary {
+  background: #bcaaa4;
+  color: #3e2723;
+}
+
+body.dark-mode .btn-secondary:hover {
+  background: #a1887f;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+}

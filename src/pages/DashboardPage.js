@@ -1,15 +1,15 @@
 import React /*,{ useContext }*/ from "react";
 import { Link } from "react-router-dom";
 import PageHeader from "../components/PageHeader";
-import "../stylesheets/HomePage.css";
+import "../stylesheets/DashboardPage.css";
 // import { UserContext } from "../context/UserContext";
 
-const HomePage = () => {
+const DashboardPage = () => {
   // const { user } = useContext(UserContext);
   return (
-    <div className={"homepage-container "}>
+    <div className={"dashboardPage-container "}>
       <PageHeader title={"Classroom Management Software"} />
-      <main className="homepage-main">
+      <main className="dashboardPage-main">
         <div className="card-container">
           <Link to="/notes" className="card">
             <h2>Notes</h2>
@@ -28,4 +28,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default DashboardPage;

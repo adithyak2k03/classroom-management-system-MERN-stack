@@ -36,7 +36,7 @@ const NoteHomePage = () => {
       const data = await fetchNotesApi();
 
       const sortedNotes = data.sort(
-        (a, b) => new Date(b.updatedDate) - new Date(a.updatedDate),
+        (a, b) => new Date(b.updatedDate) - new Date(a.updatedDate)
       );
 
       setNotes(sortedNotes);
@@ -74,11 +74,11 @@ const NoteHomePage = () => {
 
       // Update the notes list
       const updatedNotes = notes.map((note) =>
-        note._id === savedNote._id ? savedNote : note,
+        note._id === savedNote._id ? savedNote : note
       );
 
       const sortedNotes = updatedNotes.sort(
-        (a, b) => new Date(b.updatedDate) - new Date(a.updatedDate),
+        (a, b) => new Date(b.updatedDate) - new Date(a.updatedDate)
       );
 
       setNotes(sortedNotes);
@@ -144,23 +144,25 @@ const NoteHomePage = () => {
       <PageHeader title={"Your Notes"} />
       {user && (
         <>
-          <select
-            className="tag-filter"
-            value={selectedTag}
-            onChange={(e) => setSelectedTag(e.target.value)}
-          >
-            {tags.map((tag) => (
-              <option key={tag} value={tag}>
-                {tag}
-              </option>
-            ))}
-          </select>
-          <button
-            className="add-note-btn"
-            onClick={() => setShowAddModal(true)}
-          >
-            <FontAwesomeIcon icon={faPlus} /> Add Note
-          </button>
+          <div className="actions-container">
+            <select
+              className="tag-filter"
+              value={selectedTag}
+              onChange={(e) => setSelectedTag(e.target.value)}
+            >
+              {tags.map((tag) => (
+                <option key={tag} value={tag}>
+                  {tag}
+                </option>
+              ))}
+            </select>
+            <button
+              className="add-note-btn"
+              onClick={() => setShowAddModal(true)}
+            >
+              <FontAwesomeIcon icon={faPlus} /> Add Note
+            </button>
+          </div>
 
           {showAddModal && (
             <NoteAddModal

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../stylesheets/NotesModals.css";
 
 const NoteEditModal = ({ user, note, onClose, onSave }) => {
   const [title, setTittle] = useState(note.title);
@@ -18,7 +19,7 @@ const NoteEditModal = ({ user, note, onClose, onSave }) => {
 
   return (
     <div className="modal-overlay" onClick={() => onClose()}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <div className="notes modal-content" onClick={(e) => e.stopPropagation()}>
         <button className="close-btn" onClick={onClose}>
           <FontAwesomeIcon icon={faTimes} className="close-icon" />
         </button>

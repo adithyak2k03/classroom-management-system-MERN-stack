@@ -1,6 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import "../stylesheets/NotesModals.css";
 
 const NoteDeleteModal = ({ user, note, onClose, onConfirm }) => {
   if (!user) {

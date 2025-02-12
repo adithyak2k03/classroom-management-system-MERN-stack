@@ -1,0 +1,141 @@
+/* body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.dashboardPage-container {
+  text-align: center;
+}
+
+.dashboardPage-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+}
+
+.card-container {
+  display: flex;
+  gap: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  width: 250px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #555;
+} */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5dc;
+  color: #2c2c2c;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dashboardPage-container {
+  text-align: center;
+}
+
+.dashboardPage-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+}
+
+.card-container {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  text-decoration: none;
+  color: #2c2c2c;
+  width: 300px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.5s ease, box-shadow 0.5s ease, background 0.5s ease;
+}
+
+.card:hover {
+  transform: translateY(-15px) scale(1.05);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.card h2 {
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+  color: #a65e2e;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #4a4a4a;
+}
+
+body.dark-mode {
+  background-color: #2c2c2c;
+  color: #f5f5dc;
+}
+
+body.dark-mode .card {
+  background: rgba(58, 58, 58, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f5f5dc;
+}
+
+body.dark-mode .card:hover {
+  background: rgba(74, 74, 74, 0.4);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .card h2 {
+  color: #f5b56f;
+}
+
+body.dark-mode .card p {
+  color: #d1c5b1;
+}

@@ -1,4 +1,4 @@
-.signup-container {
+/* .signup-container {
   max-width: 400px;
   margin: 50px auto;
   padding: 20px;
@@ -62,6 +62,77 @@
   color: #28a745;
   text-decoration: none;
   font-weight: 500;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+} */
+
+.signup-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 25px;
+  border-radius: 10px;
+  background-color: #eafcef; /* Soft green background */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.signup-title {
+  font-size: 2.5rem;
+  color: #218838; /* Darker green */
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.signup-input {
+  padding: 12px 15px;
+  font-size: 1rem;
+  border: 1px solid #b3e8c4; /* Light green border */
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.3s ease;
+  background-color: #ffffff;
+}
+
+.signup-input:focus {
+  border-color: #218838; /* Darker green focus */
+  box-shadow: 0 0 4px rgba(33, 136, 56, 0.5);
+}
+
+.signup-button {
+  padding: 12px 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #28a745; /* Primary green */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.signup-button:hover {
+  background-color: #218838; /* Darker green */
+  transform: scale(1.02);
+}
+
+.signup-text {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #555; /* Subtle text */
+}
+
+.login-link {
+  color: #218838; /* Matching dark green */
+  text-decoration: none;
+  font-weight: 600;
 }
 
 .login-link:hover {

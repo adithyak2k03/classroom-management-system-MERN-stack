@@ -1,102 +1,4 @@
-/* Page Title Header */
-/* .page-title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 30px;
-    background-color: orange;
-    font-family: 'Cambria', 'Georgia', 'Times New Roman', serif;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    position: relative;
-}
-
-.page-title h1 {
-    flex: 1;
-    text-align: center;
-    font-size: 24px;
-    color: white;
-    font-weight: bold;
-    margin: 0;
-}
-
-.dashboard-logo {
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: transform 0.2s ease-in-out, color 0.3s;
-}
-
-.dashboard-logo:hover {
-    transform: scale(1.1);
-    color: #ffd700;
-}
-
-.profile-dropdown {
-    display: flex;
-    align-items: center;
-    position: relative;
-    cursor: pointer;
-}
-
-.profile-pic {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 8px;
-    border: 2px solid white;
-}
-
-.dropdown-icon {
-    color: white;
-    font-size: 16px;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 50px;
-    right: 0;
-    transform: translateX(-55%);
-    background-color: white;
-    color: black;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    width: 150px;
-    z-index: 1000;
-}
-
-.dropdown-content li {
-    padding: 10px;
-    border-bottom: 1px solid #f1f1f1;
-}
-
-.dropdown-content li:last-child {
-    border-bottom: none;
-}
-
-.dropdown-content li a {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.dropdown-content li:hover {
-    background-color: orange;
-    color: white;
-} */
-
-/* .profile-dropdown:hover .dropdown-content {
-    display: block;
-} */
-
-/* Profile Container */
-.profile-container {
+/* .profile-container {
   padding: 20px;
   max-width: 600px;
   margin: 20px auto;
@@ -121,4 +23,101 @@
 
 .profile-container strong {
   color: #333;
+} */
+/*---------------------------------------------------------------*/
+
+/* .profile-container {
+  padding: 25px;
+  max-width: 600px;
+  margin: 30px auto;
+  background-color: #eaf4ff;
+  border-radius: 10px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+  font-family: "Roboto", sans-serif;
+  color: #0056b3;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.profile-container h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #003f7d;
+}
+
+.profile-container p {
+  font-size: 1.1rem;
+  margin: 15px 0;
+  color: #003f7d;
+}
+
+.profile-container strong {
+  color: #0056b3;
+}
+
+body.dark-mode .profile-container {
+  background-color: #1e1e2f;
+  color: #d1d1e0;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .profile-container h1 {
+  color: #ffffff;
+}
+
+body.dark-mode .profile-container p {
+  color: #d1d1e0;
+}
+
+body.dark-mode .profile-container strong {
+  color: #1db1a3;
+} */
+
+/* Light Mode Styles */
+.profile-container {
+  padding: 25px;
+  max-width: 600px;
+  margin: 30px auto;
+  background-color: #eafcef; /* Light green background */
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  font-family: "Arial", sans-serif;
+  color: #333; /* Default text color */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.profile-container h1 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #218838; /* Darker green for headings */
+}
+
+.profile-container p {
+  font-size: 1.1rem;
+  margin: 15px 0;
+  color: #555; /* Muted text color */
+}
+
+.profile-container strong {
+  color: #218838; /* Darker green for labels */
+}
+
+/* Dark Mode Styles */
+body.dark-mode .profile-container {
+  background-color: #183d29; /* Deep muted green background */
+  color: #eafcef; /* Light green text for contrast */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Slightly darker shadow */
+}
+
+body.dark-mode .profile-container h1 {
+  color: #a7e0b1; /* Lighter green for headings in dark mode */
+}
+
+body.dark-mode .profile-container p {
+  color: #c3dec8; /* Softer green for muted text in dark mode */
+}
+
+body.dark-mode .profile-container strong {
+  color: #7ed48a; /* Vibrant green for labels in dark mode */
 }

@@ -2,125 +2,364 @@ p,
 ul {
   margin: 0;
   padding: 0;
+  font-family: "Arial", sans-serif;
 }
 
 .input-n-list {
-  margin: 0 25%;
-  padding: 1rem;
-  background-color: black;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: #f9f4ef;
+  border-radius: 12px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+  width: 50%;
 }
 
 .input-n-btn {
   display: flex;
   justify-content: space-between;
-  background: rgb(207, 207, 207);
-  width: 100%;
+  align-items: center;
+  background: #d3b59d;
+  border-radius: 8px;
+  padding: 0.5rem;
 }
 
 .input-field {
-  border: none;
+  border: 2px solid #ccb69b;
   outline: none;
-  background: transparent;
-  background: yellow;
+  background: #fffaf3;
   flex: 1;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  margin-right: 0.5rem;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 0;
 }
 
-.input-n-btn .input-field {
-  margin: 10px;
+.input-field:focus {
+  border: 2px solid #b08968;
+  box-shadow: 0px 4px 10px rgba(176, 137, 104, 0.3);
 }
 
 .input-n-btn .btn {
-  margin: 10px;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  background-color: #8b6f47;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.input-n-btn .btn:hover {
+  background-color: #735639;
+  transform: scale(1.05);
 }
 
 .task-list {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  background-color: cadetblue;
-  list-style: outside;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f5e7d4;
+  border-radius: 12px;
+  box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.05);
+  list-style: none;
 }
 
 /* -------------------------------Task component ---------------------------- */
 
 .task-item {
   display: flex;
-  padding: 10px 5px;
-  background-color: rgb(78, 148, 234);
+  padding: 1rem;
+  background-color: #e5cbb2;
   justify-content: space-between;
   align-items: center;
+  border-radius: 8px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
-.task-item p:hover {
+.task-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.task-item p {
+  font-size: 1rem;
+  color: #6e4d3c;
+  margin: 0;
+  flex: 1;
   cursor: pointer;
-  color: red;
-  background-color: rgb(108, 164, 220);
 }
 
 .task-item p.completed {
   text-decoration: line-through;
-  color: gray;
+  color: #a9a9a9;
 }
 
-/* -------------------------------Edit and delete modals ---------------------------- */
-/* Modal Overlay */
+.task-item p:hover {
+  /* color: #8b4513; */
+  color: red;
+  background-color: #e0b388;
+}
+
+.task-item div {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.task-item div input {
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.task-item div input.btn-danger {
+  background-color: #e57373;
+  color: #fff;
+}
+
+.task-item div input.btn-danger:hover {
+  background-color: #c62828;
+  transform: scale(1.1);
+}
+
+.task-item div input.btn-warning {
+  background-color: #f2c27d;
+  color: #fff;
+}
+
+.task-item div input.btn-warning:hover {
+  background-color: #d9a75c;
+  transform: scale(1.1);
+}
+
+/* ------------------------ Dark Mode -------------------------- */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode .input-n-list {
+  background-color: #1e1e1e;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .input-n-btn {
+  background: #2c2c2c;
+}
+
+body.dark-mode .input-field {
+  background: #292929;
+  color: #e0e0e0;
+  border: 2px solid #474747;
+}
+
+body.dark-mode .input-field:focus {
+  border: 2px solid #b08968;
+  box-shadow: 0px 4px 10px rgba(176, 137, 104, 0.5);
+}
+
+body.dark-mode .input-n-btn .btn {
+  background-color: #8b6f47;
+}
+
+body.dark-mode .task-list {
+  background-color: #1c1c1c;
+  box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .task-item {
+  background-color: #292929;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .task-item p {
+  color: #d0d0d0;
+}
+
+body.dark-mode .task-item p.completed {
+  color: #777;
+}
+
+body.dark-mode .task-item p:hover {
+  color: #b08968;
+  background-color: #3e3a3a;
+}
+
+body.dark-mode .task-item div input.btn-danger {
+  background-color: #c62828;
+}
+
+body.dark-mode .task-item div input.btn-warning {
+  background-color: #b08968;
+}
+
+/* -------------------------- Base Modal Styles -------------------------- */
+
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  backdrop-filter: blur(4px);
 }
 
-/* Modal Content */
 .modal-content {
-  background-color: white !important;
-  padding: 20px;
-  border-radius: 8px !important;
+  background-color: #fefbf6 !important;
+  padding: 2rem;
+  border-radius: 12px !important;
   max-width: 400px;
-  width: 100% !important;
+  width: 90% !important;
   text-align: center;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Buttons */
-.btn {
-  margin: 5px;
-  padding: 10px;
+.modal-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #5a4635;
+}
+
+.modal-content p {
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  color: #6c5a49;
+}
+.modal-content .edit-task-title {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1.5rem;
+  border: 2px solid #ccb69b;
+  border-radius: 8px;
+  background-color: #fffaf3;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal-content .edit-task-title:focus {
+  border-color: #b08968;
+  box-shadow: 0px 4px 8px rgba(176, 137, 104, 0.3);
+}
+
+.modal-content .btn {
+  margin: 0.5rem;
+  padding: 0.8rem 1.2rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
+  font-size: 1rem;
   cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
-.btn-primary {
-  background-color: #007bff;
+.modal-content .btn-primary {
+  background-color: #8b6f47;
   color: white;
 }
 
-.btn-danger {
-  background-color: #dc3545;
+.modal-content .btn-primary:hover {
+  background-color: #70573a;
+  transform: scale(1.05);
+}
+
+.modal-content .btn-secondary {
+  background-color: #d3b59d;
+  color: #5a4635;
+}
+
+.modal-content .btn-secondary:hover {
+  background-color: #bfa386;
+  transform: scale(1.05);
+}
+
+.modal-content .btn-danger {
+  background-color: #c62828;
   color: white;
 }
 
-.btn-secondary {
-  background-color: #6c757d;
-  color: white;
+.modal-content .btn-danger:hover {
+  background-color: #a52222;
+  transform: scale(1.05);
 }
 
 .close-btn {
   background: none;
   border: none;
   position: absolute;
-  right: 5px;
-  top: 0px;
-  font-size: 20px;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  color: #5a4635;
   cursor: pointer;
+  transition: color 0.3s ease;
 }
 
-.close-btn *:hover {
+.close-btn:hover {
+  color: red;
+}
+
+/* -------------------------- Dark Mode Styles -------------------------- */
+
+body.dark-mode .modal-overlay {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+body.dark-mode .modal-content {
+  background-color: #1e1e1e !important;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .modal-content h2 {
+  color: #e0e0e0;
+}
+
+body.dark-mode .modal-content p {
+  color: #d0d0d0;
+}
+
+body.dark-mode .modal-content .edit-task-title {
+  background-color: #292929;
+  color: #e0e0e0;
+  border-color: #474747;
+}
+
+body.dark-mode .modal-content .edit-task-title:focus {
+  border-color: #b08968;
+  box-shadow: 0px 4px 8px rgba(176, 137, 104, 0.5);
+}
+
+body.dark-mode .btn-primary {
+  background-color: #8b6f47;
+  color: white;
+}
+
+body.dark-mode .btn-secondary {
+  background-color: #444444;
+  color: #e0e0e0;
+}
+
+body.dark-mode .btn-danger {
+  background-color: #c62828;
+}
+
+body.dark-mode .close-btn {
+  color: #e0e0e0;
+}
+
+body.dark-mode .close-btn:hover {
   color: red;
 }

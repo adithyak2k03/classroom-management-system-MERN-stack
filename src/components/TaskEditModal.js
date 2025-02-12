@@ -30,6 +30,7 @@ const TaskEditModal = ({ user, task, isOpen, onClose, onSave }) => {
           value={newTask}
           onChange={(e) => setNewTask(e.target.value)}
           placeholder={task.text}
+          className="edit-task-title"
         />
 
         <div>

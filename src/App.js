@@ -7,17 +7,20 @@ import {
 } from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import HomePage from "./pages/HomePage";
+import DashboardPage from "./pages/DashboardPage";
 import NoteHomePage from "./pages/NoteHomePage";
 import TaskHomePage from "./pages/TaskHomePage";
 import Profile from "./pages/Profile";
 import { UserContext } from "./context/UserContext";
 
 const App = () => {
-  const { user } = useContext(UserContext);
+  const { user, loading } = useContext(UserContext);
 
   const PrivateRoute = ({ element }) => {
     // Redirect to login if no user is found (not logged in)
+    if (loading) {
+      return <div>Loading...</div>; // Optional: Add a better loading UI
+    }
     return user ? element : <Navigate to="/" />;
   };
 
@@ -28,7 +31,7 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route
           path="/dashboard"
-          element={<PrivateRoute element={<HomePage />} />}
+          element={<PrivateRoute element={<DashboardPage />} />}
         />
         <Route
           path="/profile"

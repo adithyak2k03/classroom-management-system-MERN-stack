@@ -63,7 +63,6 @@ const NotesGrid = ({ user, notes, onEditNote, onDeleteNote }) => {
         ))}
       </div>
 
-      {/* {false &&( */}
       {selectedNote && (
         <div className="modal-overlay" onClick={() => setSelectedNote(null)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
