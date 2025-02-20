@@ -1,0 +1,66 @@
+/* Homepage Container */
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(to right, #4a90e2, #662d91);
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Title and Tagline */
+.homepage-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.homepage-tagline {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+/* Button Container */
+.button-container {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.homepage-btn {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+  width: 120px;
+}
+
+/* Login Button */
+.login-btn {
+  background: white;
+  color: #4a90e2;
+  border: 2px solid white;
+}
+
+.login-btn:hover {
+  background: #4a90e2;
+  color: white;
+}
+
+/* Signup Button */
+.signup-btn {
+  background: #ffcc00;
+  color: #333;
+  border: 2px solid #ffcc00;
+}
+
+.signup-btn:hover {
+  background: #e6b800;
+}

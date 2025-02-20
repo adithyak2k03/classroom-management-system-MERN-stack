@@ -11,6 +11,7 @@ import DashboardPage from "./pages/DashboardPage";
 import NoteHomePage from "./pages/NoteHomePage";
 import TaskHomePage from "./pages/TaskHomePage";
 import Profile from "./pages/Profile";
+import HomePage from "./pages/HomePage";
 import { UserContext } from "./context/UserContext";
 
 const App = () => {
@@ -27,7 +28,8 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route
           path="/dashboard"
