@@ -1,7 +1,9 @@
+/* ======= General Styles ======= */
 .page-title.admin {
   background-color: #0056b3;
   color: #fff;
 }
+
 .admin-users-container {
   max-width: 1100px;
   margin: 40px auto;
@@ -12,20 +14,24 @@
   text-align: center;
 }
 
-.admin-users-container h2 {
+.admin-users-container h2,
+.user-card h3 {
   color: #333;
-  margin-bottom: 20px;
+}
+
+.admin-users-container button,
+.user-actions button {
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .admin-users-container button {
   background-color: #007bff;
   color: #fff;
-  border: none;
-  padding: 10px 15px;
   margin-bottom: 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
 }
 
 .admin-users-container button:hover {
@@ -49,11 +55,6 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.user-card h3 {
-  color: #333;
-  margin-bottom: 10px;
-}
-
 .user-card p {
   margin: 5px 0;
   color: #666;
@@ -64,14 +65,6 @@
   margin-top: 10px;
   display: flex;
   justify-content: space-between;
-}
-
-.user-actions button {
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
 }
 
 .user-actions button:first-child {
@@ -92,7 +85,7 @@
   background-color: #b02a37;
 }
 
-/* ======= Common Modal Styles ======= */
+/* ======= Modal Styles ======= */
 .add-user-modal,
 .edit-user-modal,
 .delete-user-modal {
@@ -108,88 +101,8 @@
   z-index: 1000;
 }
 
-/* ======= Add User Modal ======= */
-.add-user-modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 350px;
-  text-align: center;
-  position: relative;
-}
-
-.add-user-modal-content h2 {
-  margin-bottom: 15px;
-}
-
-.add-user-modal-content input,
-.add-user-modal-content select {
-  width: 100%;
-  padding: 8px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.add-user-modal-content button {
-  width: 48%;
-  padding: 10px;
-  margin: 10px 1%;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.add-user-modal-content button:first-of-type {
-  background: #28a745;
-  color: white;
-}
-
-.add-user-modal-content button:last-of-type {
-  background: #dc3545;
-  color: white;
-}
-
-/* ======= Edit User Modal ======= */
-.edit-user-modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 350px;
-  text-align: center;
-  position: relative;
-}
-
-/* Apply same styles for form elements in edit modal */
-.edit-user-modal-content input,
-.edit-user-modal-content select {
-  width: 100%;
-  padding: 8px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.edit-user-modal-content button {
-  width: 48%;
-  padding: 10px;
-  margin: 10px 1%;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.edit-user-modal-content button:first-of-type {
-  background: #007bff;
-  color: white;
-}
-
-.edit-user-modal-content button:last-of-type {
-  background: #dc3545;
-  color: white;
-}
-
-/* ======= Delete User Modal ======= */
+.add-user-modal-content,
+.edit-user-modal-content,
 .delete-user-modal-content {
   background: white;
   padding: 20px;
@@ -199,10 +112,25 @@
   position: relative;
 }
 
-.delete-user-modal-content p {
-  margin-bottom: 20px;
+.add-user-modal-content h2,
+.edit-user-modal-content h2,
+.delete-user-modal-content h2 {
+  margin-bottom: 15px;
 }
 
+.add-user-modal-content input,
+.add-user-modal-content select,
+.edit-user-modal-content input,
+.edit-user-modal-content select {
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.add-user-modal-content button,
+.edit-user-modal-content button,
 .delete-user-modal-content button {
   width: 48%;
   padding: 10px;
@@ -212,6 +140,18 @@
   cursor: pointer;
 }
 
+.add-user-modal-content button:first-of-type,
+.edit-user-modal-content button:first-of-type {
+  background: #28a745;
+  color: white;
+}
+
+.edit-user-modal-content button:first-of-type {
+  background: #007bff;
+}
+
+.add-user-modal-content button:last-of-type,
+.edit-user-modal-content button:last-of-type,
 .delete-user-modal-content button:first-of-type {
   background: #dc3545;
   color: white;
@@ -219,7 +159,6 @@
 
 .delete-user-modal-content button:last-of-type {
   background: #6c757d;
-  color: white;
 }
 
 /* ======= Close Button ======= */
@@ -230,4 +169,71 @@
   cursor: pointer;
   font-size: 18px;
   color: #333;
+}
+
+/* ======= Dark Mode Styles ======= */
+body.dark-mode .page-title.admin {
+  background-color: #003f7f;
+  color: #e0e0e0;
+}
+
+body.dark-mode .admin-users-container,
+body.dark-mode .add-user-modal-content,
+body.dark-mode .edit-user-modal-content,
+body.dark-mode .delete-user-modal-content {
+  background-color: #1e1e1e;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .admin-users-container h2,
+body.dark-mode .user-card h3,
+body.dark-mode .add-user-modal-content h2,
+body.dark-mode .edit-user-modal-content h2,
+body.dark-mode .delete-user-modal-content h2 {
+  color: #e0e0e0;
+}
+
+body.dark-mode .admin-users-container button,
+body.dark-mode .user-actions button:first-child {
+  background-color: #8b6f47;
+}
+
+body.dark-mode .admin-users-container button:hover,
+body.dark-mode .user-actions button:first-child:hover {
+  background-color: #6e5231;
+}
+
+body.dark-mode .user-card {
+  background-color: #292929;
+  border-color: #444;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .user-card p {
+  color: #d0d0d0;
+}
+
+body.dark-mode .user-actions button:last-child {
+  background-color: #c62828;
+}
+
+body.dark-mode .user-actions button:last-child:hover {
+  background-color: #a32121;
+}
+
+body.dark-mode .add-user-modal-content input,
+body.dark-mode .edit-user-modal-content input,
+body.dark-mode .add-user-modal-content select,
+body.dark-mode .edit-user-modal-content select {
+  background-color: #292929;
+  color: #e0e0e0;
+  border-color: #474747;
+}
+
+body.dark-mode .close-icon {
+  color: #e0e0e0;
+}
+
+body.dark-mode .close-icon:hover {
+  color: red;
 }

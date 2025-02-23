@@ -47,18 +47,18 @@ const PageHeader = ({ title }) => {
 
       <h1>{title}</h1>
 
-      <div className="profile-menu">
+      <button className="profile-menu bg-transparent" onClick={toggleDropdown}>
         <img
           src="/path-to-profile-photo.png"
           alt="Profile"
           className="profile-photo"
-          onClick={toggleDropdown}
+          // onClick={toggleDropdown}
         />
 
         <FontAwesomeIcon
           icon={faChevronDown}
           className="dropdown-icon"
-          onClick={toggleDropdown}
+          // onClick={toggleDropdown}
         />
 
         {isDropdownOpen && (
@@ -84,7 +84,7 @@ const PageHeader = ({ title }) => {
             </button>
           </div>
         )}
-      </div>
+      </button>
     </div>
   );
 };

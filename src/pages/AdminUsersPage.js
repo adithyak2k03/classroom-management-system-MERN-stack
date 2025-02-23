@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
 import { UserContext } from "../context/UserContext";
-import AddUserModal from "../components/AddUserModal";
-import EditUserModal from "../components/EditUserModal";
-import DeleteUserModal from "../components/DeleteUserModal";
+import AddUserModal from "../components/UserAddModal";
+import EditUserModal from "../components/UserEditModal";
+import DeleteUserModal from "../components/UserDeleteModal";
 import PageHeader from "../components/PageHeader";
 import {
   fetchUsersApi,
@@ -31,9 +31,9 @@ const AdminUsersPage = () => {
 
   if (user?.role !== "admin") {
     return <h2>Access Denied</h2>;
+  } else {
+    document.querySelector(".page-title").classList.add("admin");
   }
-
-  document.querySelector(".page-title").classList.add("admin");
 
   return (
     <>
