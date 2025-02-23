@@ -3,6 +3,8 @@ import "../stylesheets/ProfilePage.css";
 import PageHeader from "../components/PageHeader";
 import { Link } from "react-router-dom";
 
+const BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const Profile = () => {
   const [profile, setProfile] = useState(null);
   const [error, setError] = useState(null);
@@ -12,7 +14,7 @@ const Profile = () => {
       try {
         const token = localStorage.getItem("token");
 
-        const response = await fetch("http://localhost:5000/profile", {
+        const response = await fetch(`${BASE_URL}/profile`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

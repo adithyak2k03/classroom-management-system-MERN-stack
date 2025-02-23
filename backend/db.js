@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
-const mongoURI = "mongodb://localhost:27017/classroomDB";
+const mongoURI =
+  process.env.MONGO_URI || "mongodb://localhost:27017/classroomDB";
 
 const connectMongo = async () => {
   try {

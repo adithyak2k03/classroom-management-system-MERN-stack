@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
 const TASKS_API_URL = `${BASE_URL}/tasks`;
 const NOTES_API_URL = `${BASE_URL}/notes`;
@@ -115,7 +115,7 @@ const addTaskApi = async (task) => {
 const populateData = async () => {
   if (!token || !userId) {
     console.error(
-      "Token or User ID not provided. Please add them to the script.",
+      "Token or User ID not provided. Please add them to the script."
     );
     return;
   }

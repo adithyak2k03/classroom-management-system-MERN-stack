@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
 const NOTES_API_URL = `${BASE_URL}/notes`;
 
@@ -82,7 +82,7 @@ const editNoteApi = async (updatedNote) => {
   try {
     const response = await fetch(
       `${NOTES_API_URL}/${updatedNote._id}`,
-      payload,
+      payload
     );
     if (response.ok) {
       return await response.json();
