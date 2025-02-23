@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../stylesheets/ProfilePage.css";
 import PageHeader from "../components/PageHeader";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const [profile, setProfile] = useState(null);
@@ -66,6 +67,13 @@ const Profile = () => {
         <p>
           <strong>Number of Tasks:</strong> {profile.taskCount}
         </p>
+        {profile.role === "admin" && (
+          <div className="admin-section">
+            <Link to="/admin-users" className="admin-button">
+              Manage Users
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -12,17 +12,24 @@ import NoteHomePage from "./pages/NoteHomePage";
 import TaskHomePage from "./pages/TaskHomePage";
 import Profile from "./pages/Profile";
 import HomePage from "./pages/HomePage";
+import AdminUsersPage from "./pages/AdminUsersPage";
 import { UserContext } from "./context/UserContext";
 
 const App = () => {
   const { user, loading } = useContext(UserContext);
 
-  const PrivateRoute = ({ element }) => {
+  const PrivateRoute = ({ element, adminOnly = false }) => {
     // Redirect to login if no user is found (not logged in)
     if (loading) {
       return <div>Loading...</div>; // Optional: Add a better loading UI
     }
-    return user ? element : <Navigate to="/" />;
+    if (!user) {
+      return <Navigate to="/" />;
+    }
+    if (adminOnly && user.role !== "admin") {
+      return <Navigate to="/dashboard" />; // Redirect non-admins
+    }
+    return element;
   };
 
   return (
@@ -31,6 +38,12 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/admin-users"
+          element={
+            <PrivateRoute element={<AdminUsersPage />} adminOnly={true} />
+          }
+        />
         <Route
           path="/dashboard"
           element={<PrivateRoute element={<DashboardPage />} />}

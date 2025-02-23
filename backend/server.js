@@ -100,8 +100,88 @@ app.get("/profile", authenticateUser, async (req, res) => {
 });
 
 // ---------------------------
-// Authentication Routes
+// Admin Routes - Fetch All Users
 // ---------------------------
+app.get("/admin/users", authenticateUser, async (req, res) => {
+  try {
+    if (req.user.role !== "admin") {
+      return res.status(403).json({ error: "Access denied" });
+    }
+
+    const users = await User.find().select("-password");
+    res.json(users);
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    res.status(500).json({ error: "Failed to fetch users" });
+  }
+});
+
+app.post("/admin/users", authenticateUser, async (req, res) => {
+  try {
+    if (req.user.role !== "admin") {
+      return res.status(403).json({ error: "Access denied" });
+    }
+
+    const { name, email, password, role } = req.body;
+
+    const existingUser = await User.findOne({ email });
+    if (existingUser)
+      return res.status(400).json({ error: "User already exists" });
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = new User({ name, email, password: hashedPassword, role });
+    await newUser.save();
+
+    res
+      .status(201)
+      .json({ message: "User created successfully", user: newUser });
+  } catch (error) {
+    console.error("Error creating user", error);
+    res.status(500).json({ error: "Failed to create user" });
+  }
+});
+
+app.put("/admin/users/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, email, role } = req.body;
+
+    if (!id) {
+      return res.status(400).json({ error: "User ID is required" });
+    }
+
+    const updatedUser = await User.findOneAndUpdate(
+      { _id: id },
+      { name, email, role },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.json(updatedUser);
+  } catch (error) {
+    console.error("Error updating user:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+app.delete("/admin/users/:id", authenticateUser, async (req, res) => {
+  try {
+    if (req.user.role !== "admin") {
+      return res.status(403).json({ error: "Access denied" });
+    }
+
+    const { id } = req.params;
+    await User.findByIdAndDelete(id);
+
+    res.json({ message: "User deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting user", error);
+    res.status(500).json({ error: "Failed to delete user" });
+  }
+});
 
 // Signup
 app.post("/signup", async (req, res) => {

@@ -103,6 +103,21 @@ body.dark-mode .profile-container strong {
   color: #218838; /* Darker green for labels */
 }
 
+.admin-button {
+  display: inline-block;
+  padding: 10px 15px;
+  margin-top: 10px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.admin-button:hover {
+  background-color: #0056b3;
+}
+
 /* Dark Mode Styles */
 body.dark-mode .profile-container {
   background-color: #183d29; /* Deep muted green background */
