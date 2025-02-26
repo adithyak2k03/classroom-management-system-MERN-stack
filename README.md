@@ -1,70 +1,140 @@
-# Getting Started with Create React App
+# 🎓 Classroom Management System  
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 📌 Project Overview  
 
-## Available Scripts
+The **Classroom Management System** is a **MERN stack** web application designed to streamline class management. It allows teachers (**admins**) to manage students efficiently through a dashboard where they can **add, edit, and remove users**. Students can access their profiles and use integrated tools like **Notes and a To-Do List** to stay organized.  
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🚀 Features  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+✅ **User authentication** (Signup/Login)  
+✅ **Profile management** with profile picture upload  
+✅ **Notes and To-Do List** applications for students  
+✅ **Admin dashboard** for managing students  
+✅ **View all users**  
+✅ **Add new users**  
+✅ **Edit user details**  
+✅ **Delete users**  
+✅ **Responsive and user-friendly UI**  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🛠️ Tech Stack  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### **Frontend**  
+- React.js  
+- Context API  
+- Tailwind CSS  
 
-### `npm run build`
+### **Backend**  
+- Node.js  
+- Express.js  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### **Database**  
+- MongoDB  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### **Authentication**  
+- JWT (JSON Web Tokens)  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### **Hosting**  
+- **Frontend:** Vercel  
+- **Backend:** Render  
 
-### `npm run eject`
+---
+<!---
+## 📸 Screenshots  
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1️⃣ **Home Page** – Shows login/signup options.  
+   ![Home Page](./screenshots/homepage.png)  
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2️⃣ **Login Page** – User authentication.  
+   ![Login Page](./screenshots/login.png)  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3️⃣ **User Dashboard** – Displays options like Notes & To-Do List.  
+   ![User Dashboard](./screenshots/user-dashboard.png)  
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4️⃣ **Admin Panel** – Overview of all users.  
+   ![Admin Panel](./screenshots/admin-panel.png)  
 
-## Learn More
+5️⃣ **Add User Modal** – Popup form to add a new user.  
+   ![Add User Modal](./screenshots/add-user-modal.png)  
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+6️⃣ **Edit User Modal** – Form to edit user details.  
+   ![Edit User Modal](./screenshots/edit-user-modal.png)  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+7️⃣ **Delete Confirmation Modal** – Prompt before deleting a user.  
+   ![Delete Modal](./screenshots/delete-modal.png)  
 
-### Code Splitting
+_(Save your screenshots in a `screenshots/` folder in the repo and replace the placeholder paths above.)_  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
+-->
 
-### Analyzing the Bundle Size
+## ⚡ Installation & Setup  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 1️⃣ Clone the Repository  
 
-### Making a Progressive Web App
+```sh
+git clone https://github.com/your-username/classroom-management-system.git
+cd classroom-management-system
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 2️⃣ Install Dependencies  
 
-### Advanced Configuration
+#### Frontend  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```sh
+cd frontend
+npm install
+npm start
+```
 
-### Deployment
+#### Backend  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```sh
+cd backend
+npm install
+npm start
+```
 
-### `npm run build` fails to minify
+### 3️⃣ Environment Variables  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Create a `.env` file in the `backend` folder and add:  
+
+```sh
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret_key
+```
+
+---
+
+## 🌍 Live Demo  
+
+🔗 **Frontend and Backend:** [https://classroom-management-system-mern-stack.vercel.app/](#)  
+
+_(Replace `#` with actual deployed links.)_  
+
+---
+
+## 🔥 Future Improvements  
+
+🚀 **More Role-based access control**  
+📊 **Enhanced analytics dashboard**  
+🗓️ **Additional integrations** (Calendar, Chat system)  
+
+---
+
+
+## 💡 Contributing  
+
+Contributions are welcome! Feel free to fork the repository and submit a **pull request**.  
+
+---
+
+## 📩 Contact  
+
+For any queries, feel free to reach out!  
+
+📧 Email: your-email@example.com  
+🐙 GitHub: [your-username](https://github.com/your-username)  
