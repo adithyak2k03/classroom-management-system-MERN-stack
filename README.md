@@ -2,7 +2,7 @@
 
 ## 📌 Project Overview  
 
-The **Classroom Management System** is a **MERN stack** web application designed to streamline class management. It allows teachers (**admins**) to manage students efficiently through a dashboard where they can **add, edit, and remove users**. Students can access their profiles and use integrated tools like **Notes and a To-Do List** to stay organized.  
+The **Classroom Management System** is a **MERN stack** web application designed to streamline class management. It allows teachers (**admins**) to manage students efficiently through a dashboard where they can **add, edit, and remove users, notes and tasks**. Students can access their profiles and use integrated tools like **Notes and a To-Do List** to stay organized.  
 
 ---
 
