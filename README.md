@@ -84,7 +84,6 @@ cd classroom-management-system
 ```sh
 cd frontend
 npm install
-npm start
 ```
 
 #### Backend  
@@ -92,9 +91,12 @@ npm start
 ```sh
 cd backend
 npm install
-npm start
 ```
 
+```sh
+cd ..
+npm run both
+```
 ### 3️⃣ Environment Variables  
 
 Create a `.env` file in the `backend` folder and add:  
