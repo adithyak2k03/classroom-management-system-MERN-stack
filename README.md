@@ -12,10 +12,7 @@ The **Classroom Management System** is a **MERN stack** web application designed
 ✅ **Profile management** with profile picture upload  
 ✅ **Notes and To-Do List** applications for students  
 ✅ **Admin dashboard** for managing students  
-✅ **View all users**  
-✅ **Add new users**  
-✅ **Edit user details**  
-✅ **Delete users**  
+✅ **View, Add, Edit, Delete all users data, notes and tasks**
 ✅ **Responsive and user-friendly UI**  
 
 ---
