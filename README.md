@@ -22,7 +22,7 @@ The **Classroom Management System** is a **MERN stack** web application designed
 ### **Frontend**  
 - React.js  
 - Context API  
-- CSS5 and Bootstrap  
+- CSS3 and Bootstrap CSS
 
 ### **Backend**  
 - Node.js  
