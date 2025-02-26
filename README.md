@@ -117,6 +117,16 @@ _(Replace `#` with actual deployed links.)_
 
 ---
 
+## 🔥 Test User Details
+
+Username: takeshi.nakamura.ee@univ.edu
+Password: mypassword123
+
+Admin Username: alexander.miller.engfarm@univ.edu
+Password: mypassword123
+
+--
+
 ## 🔥 Future Improvements  
 
 🚀 **More Role-based access control**  
