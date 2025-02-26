@@ -13,7 +13,7 @@ The **Classroom Management System** is a **MERN stack** web application designed
 ✅ **Notes and To-Do List** applications for students  
 ✅ **Admin dashboard** for managing students  
 ✅ **View, Add, Edit, Delete all users data, notes and tasks**  
-✅ **Responsive and user-friendly UI**  
+<!---✅ **Responsive and user-friendly UI**->  
 
 ---
 
@@ -130,7 +130,7 @@ Password: mypassword123
 
 🚀 **More Role-based access control**  
 📊 **Enhanced analytics dashboard**  
-🗓️ **Additional integrations** (Calendar, Chat system)  
+🗓️ **Additional integrations** (Calendar, Chat system) 
 
 ---
 
@@ -140,10 +140,3 @@ Password: mypassword123
 Contributions are welcome! Feel free to fork the repository and submit a **pull request**.  
 
 ---
-
-## 📩 Contact  
-
-For any queries, feel free to reach out!  
-
-📧 Email: your-email@example.com  
-🐙 GitHub: [your-username](https://github.com/your-username)  
