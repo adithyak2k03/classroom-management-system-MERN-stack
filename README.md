@@ -22,14 +22,14 @@ The **Classroom Management System** is a **MERN stack** web application designed
 ### **Frontend**  
 - React.js  
 - Context API  
-- Tailwind CSS  
+- CSS5 and Bootstrap  
 
 ### **Backend**  
 - Node.js  
 - Express.js  
 
 ### **Database**  
-- MongoDB  
+- MongoDB
 
 ### **Authentication**  
 - JWT (JSON Web Tokens)  
