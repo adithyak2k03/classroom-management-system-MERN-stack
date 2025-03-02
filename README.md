@@ -110,7 +110,7 @@ JWT_SECRET=your_jwt_secret_key
 
 ## 🌍 Live Demo  
 
-🔗 **Frontend and Backend:** [https://classroom-management-system-mern-stack.vercel.app/](#)  
+🔗 **Frontend and Backend:** [https://classroom-management-system-mern-stack.vercel.app/](https://classroom-management-system-mern-stack.vercel.app/)  
 
 _(Replace `#` with actual deployed links.)_  
 
