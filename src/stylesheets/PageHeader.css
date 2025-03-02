@@ -142,3 +142,40 @@ body.dark-mode .dropdown-menu button:hover {
   background-color: #ff6f3f;
   color: #121212;
 }
+
+/* Responsive Styles for PageHeader */
+@media (max-width: 768px) {
+  .page-title {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .d-flex.flex-row.align-items-center {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .logo-element {
+    font-size: 2.5rem;
+  }
+
+  .page-title h1 {
+    font-size: 20px;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .profile-menu {
+    margin-top: 10px;
+  }
+
+  .profile-photo {
+    width: 35px;
+    height: 35px;
+  }
+
+  .dropdown-menu {
+    top: 60px;
+    transform: translateX(-50%);
+  }
+}

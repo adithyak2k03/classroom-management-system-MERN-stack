@@ -108,3 +108,47 @@ body.dark-mode .note-card .btn-warning {
 body.dark-mode .note-card .btn-danger {
   background-color: #8d3e3e;
 }
+
+/* Responsive Styles for NotesGrid */
+@media (max-width: 768px) {
+  .notes-grid {
+    margin: 0 5%;
+    padding: 15px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .note-card {
+    max-width: 100%;
+    min-width: unset;
+    width: 90%;
+    height: auto;
+  }
+
+  .note-card .card-title {
+    font-size: 1.1em;
+  }
+
+  .note-card .card-text {
+    font-size: 0.9em;
+  }
+
+  .note-card .card-footer {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .note-card button {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .modal-content {
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 20px;
+    border-radius: 10px;
+  }
+}

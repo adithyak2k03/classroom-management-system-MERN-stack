@@ -139,3 +139,46 @@ body.dark-mode .card h2 {
 body.dark-mode .card p {
   color: #d1c5b1;
 }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .dashboardPage-main {
+    min-height: auto;
+    padding: 20px;
+  }
+
+  .card-container {
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .card {
+    width: 90%;
+    height: auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card h2 {
+    font-size: 1.5rem;
+  }
+
+  .card p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 15px;
+  }
+
+  .card h2 {
+    font-size: 1.2rem;
+  }
+
+  .card p {
+    font-size: 0.8rem;
+  }
+}

@@ -237,3 +237,76 @@ body.dark-mode .close-icon {
 body.dark-mode .close-icon:hover {
   color: red;
 }
+
+/* ======= Responsive Styles ======= */
+@media (max-width: 768px) {
+  .admin-users-container {
+    padding: 15px;
+  }
+
+  .user-cards {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .user-card {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .admin-users-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .user-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .user-card p {
+    font-size: 0.9rem;
+  }
+
+  .admin-users-container button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .user-actions button {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-users-container {
+    padding: 10px;
+  }
+
+  .user-card {
+    padding: 8px;
+  }
+
+  .admin-users-container h2 {
+    font-size: 1.2rem;
+  }
+
+  .user-card h3 {
+    font-size: 1rem;
+  }
+
+  .user-card p {
+    font-size: 0.8rem;
+  }
+
+  .admin-users-container button,
+  .user-actions button {
+    padding: 6px 8px;
+    font-size: 0.8rem;
+  }
+
+  .close-icon {
+    font-size: 16px;
+    top: 8px;
+    right: 10px;
+  }
+}

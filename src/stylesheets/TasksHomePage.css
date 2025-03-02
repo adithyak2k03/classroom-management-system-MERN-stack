@@ -363,3 +363,126 @@ body.dark-mode .close-btn {
 body.dark-mode .close-btn:hover {
   color: red;
 }
+
+/* ---------- Responsive Styles for TasksHomePage ---------- */
+
+@media (max-width: 1024px) {
+  .input-n-list {
+    width: 70%;
+  }
+
+  .input-field {
+    font-size: 0.9rem;
+  }
+
+  .input-n-btn .btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .task-list {
+    padding: 0.8rem;
+  }
+
+  .task-item p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .input-n-list {
+    width: 80%;
+    padding: 1rem;
+  }
+
+  .input-n-btn {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .input-field {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+    padding: 0.6rem;
+  }
+
+  .task-item {
+    padding: 0.8rem;
+  }
+
+  .task-item p {
+    font-size: 0.85rem;
+  }
+
+  .task-item div input {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .modal-content {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+
+  .modal-content h2 {
+    font-size: 1.25rem;
+  }
+
+  .modal-content p {
+    font-size: 0.9rem;
+  }
+
+  .modal-content .edit-task-title {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .input-n-list {
+    width: 90%;
+    padding: 1rem;
+  }
+
+  .task-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .task-item p {
+    font-size: 0.8rem;
+  }
+
+  .task-item div {
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+
+  .task-item div input {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+  }
+
+  .modal-content {
+    padding: 1rem;
+  }
+
+  .modal-content h2 {
+    font-size: 1rem;
+  }
+
+  .modal-content p,
+  .modal-content .edit-task-title {
+    font-size: 0.8rem;
+  }
+
+  .input-field,
+  .modal-content .edit-task-title {
+    padding: 0.5rem;
+  }
+
+  .close-btn {
+    font-size: 1.2rem;
+  }
+}

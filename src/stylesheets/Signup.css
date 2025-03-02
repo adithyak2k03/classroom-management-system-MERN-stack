@@ -138,3 +138,42 @@
 .login-link:hover {
   text-decoration: underline;
 }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .signup-container {
+    width: 90%;
+    margin: 30px auto;
+    padding: 20px;
+  }
+
+  .signup-title {
+    font-size: 2rem;
+  }
+
+  .signup-input,
+  .signup-button {
+    font-size: 1rem;
+    padding: 10px 12px;
+  }
+
+  .signup-text {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-title {
+    font-size: 1.8rem;
+  }
+
+  .signup-input,
+  .signup-button {
+    font-size: 0.9rem;
+    padding: 8px 10px;
+  }
+
+  .signup-text {
+    font-size: 0.8rem;
+  }
+}

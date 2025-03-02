@@ -136,3 +136,26 @@ body.dark-mode .profile-container p {
 body.dark-mode .profile-container strong {
   color: #7ed48a; /* Vibrant green for labels in dark mode */
 }
+
+/* Profile Page Responsive Styles */
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 15px;
+    margin: 20px auto;
+    width: 90%;
+  }
+
+  .profile-container h1 {
+    font-size: 1.8rem;
+  }
+
+  .profile-container p {
+    font-size: 1rem;
+    margin: 10px 0;
+  }
+
+  .admin-button {
+    width: 100%;
+    padding: 12px;
+  }
+}

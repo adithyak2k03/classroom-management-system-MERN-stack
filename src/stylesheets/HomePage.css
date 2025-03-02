@@ -64,3 +64,39 @@
 .signup-btn:hover {
   background: #e6b800;
 }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .homepage-title {
+    font-size: 2rem;
+  }
+
+  .homepage-tagline {
+    font-size: 1rem;
+  }
+
+  .button-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .homepage-btn {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .homepage-title {
+    font-size: 1.5rem;
+  }
+
+  .homepage-tagline {
+    font-size: 0.9rem;
+  }
+
+  .homepage-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}

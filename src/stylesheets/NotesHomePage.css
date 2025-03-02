@@ -67,3 +67,25 @@ body.dark-mode .add-note-btn {
   background-color: #4d3a28;
   color: #f3e5d3;
 }
+
+/* Responsive Styles for NotesHomePage */
+@media (max-width: 768px) {
+  .actions-container {
+    flex-direction: column;
+    gap: 45px;
+    margin: 20px auto;
+    width: 90%;
+  }
+
+  .tag-filter {
+    /* width: 100%; */
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+  .add-note-btn {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
+  }
+}
