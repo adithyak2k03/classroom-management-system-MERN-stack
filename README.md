@@ -13,7 +13,7 @@ The **Classroom Management System** is a **MERN stack** web application designed
 ✅ **Notes and To-Do List** applications for students  
 ✅ **Admin dashboard** for managing students  
 ✅ **View, Add, Edit, Delete all users data, notes and tasks**  
-<!---✅ **Responsive and user-friendly UI**->  
+<!---✅ **Responsive and user-friendly UI**-->  
 
 ---
 
@@ -39,34 +39,44 @@ The **Classroom Management System** is a **MERN stack** web application designed
 - **Backend:** Render  
 
 ---
-<!---
+
 ## 📸 Screenshots  
 
 1️⃣ **Home Page** – Shows login/signup options.  
    ![Home Page](./screenshots/homepage.png)  
 
-2️⃣ **Login Page** – User authentication.  
+2️⃣ **Signup Page** – User registration for new accounts.  
+   ![Login Page](./screenshots/signup.png)  
+   
+3️⃣ **Login Page** – User authentication.  
    ![Login Page](./screenshots/login.png)  
 
-3️⃣ **User Dashboard** – Displays options like Notes & To-Do List.  
-   ![User Dashboard](./screenshots/user-dashboard.png)  
+4️⃣ **User Dashboard** – Displays options like Notes & To-Do List.  
+   ![User Dashboard](./screenshots/user-dashboard.png)
 
-4️⃣ **Admin Panel** – Overview of all users.  
+5️⃣ **Notes Page** – View and manage user notes.  
+   ![Admin Panel](./screenshots/notes.png) 
+
+6️⃣ **To-Do List Page** – View and manage to-do tasks. 
+![Admin Panel](./screenshots/todo-list.png) 
+
+7️⃣ **Profile Page** – Allows users to manage and update their profile information.
+![Admin Panel](./screenshots/profile.png) 
+
+8️⃣ **Admin Panel** – Overview of all users.  
    ![Admin Panel](./screenshots/admin-panel.png)  
 
-5️⃣ **Add User Modal** – Popup form to add a new user.  
+9️⃣ **Add User Modal** – Popup form to add a new user.  
    ![Add User Modal](./screenshots/add-user-modal.png)  
 
-6️⃣ **Edit User Modal** – Form to edit user details.  
+🔟 **Edit User Modal** – Form to edit user details.  
    ![Edit User Modal](./screenshots/edit-user-modal.png)  
 
-7️⃣ **Delete Confirmation Modal** – Prompt before deleting a user.  
+1️⃣1️⃣ **Delete Confirmation Modal** – Prompt before deleting a user.  
    ![Delete Modal](./screenshots/delete-modal.png)  
 
-_(Save your screenshots in a `screenshots/` folder in the repo and replace the placeholder paths above.)_  
-
 ---
--->
+
 
 ## ⚡ Installation & Setup  
 
@@ -93,10 +103,6 @@ cd backend
 npm install
 ```
 
-```sh
-cd ..
-npm run both
-```
 ### 3️⃣ Environment Variables  
 
 Create a `.env` file in the `backend` folder and add:  
@@ -104,6 +110,13 @@ Create a `.env` file in the `backend` folder and add:
 ```sh
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret_key
+```
+### 4️⃣ Run Code  
+This  starts both frontend and backend using Concurrently
+
+```sh
+cd ..
+npm run both
 ```
 
 ---
@@ -117,6 +130,8 @@ _(Replace `#` with actual deployed links.)_
 ---
 
 ## 🔥 Test User Details
+
+Use these login details to see the workings of the project
 
 Username: takeshi.nakamura.ee@univ.edu
 Password: mypassword123
