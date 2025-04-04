@@ -121,6 +121,13 @@ Password: mypassword123
 🗓️ **Additional integrations** (Calendar, Chat system) 
 
 ---
+## Todo list
+
+- ** Add a loading bar in login page / signup page since first api hot is taking time.**
+- ** Chat System (either live-only chat free for all temporary type // or user based chat application with stored permanent chats)**
+- ** Integrate other applications i did here (like car game highway havoc, chat application**
+- ** Add file storage aswell( bit more work since it requires Cloud storage and have to get permanent free ones)**
+
 
 
 ## 💡 Contributing  
