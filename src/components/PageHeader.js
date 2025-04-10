@@ -13,7 +13,7 @@ import "../stylesheets/PageHeader.css";
 import { UserContext } from "../context/UserContext";
 
 const PageHeader = ({ title }) => {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -30,6 +30,7 @@ const PageHeader = ({ title }) => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    setUser(null);
     window.location.reload();
   };
 

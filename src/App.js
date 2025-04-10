@@ -23,6 +23,7 @@ const App = () => {
     if (loading) {
       return <div>Loading...</div>; // Optional: Add a better loading UI
     }
+
     if (!user) {
       return <Navigate to="/" />;
     }

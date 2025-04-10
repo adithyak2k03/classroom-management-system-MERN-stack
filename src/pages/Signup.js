@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { signupUserApi } from "../services/api";
 import "../stylesheets/Signup.css";
+import { UserContext } from "../context/UserContext";
+import LoadingScreen from "../components/LoadingScreen";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -9,22 +11,33 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  const { loading, setLoading } = useContext(UserContext); // Add this to control loading screen
+
   const handleSignup = async (e) => {
     e.preventDefault();
 
     try {
+      setLoading(true); // Show loading screen
+
       const data = await signupUserApi(name, email, password);
+
+      setLoading(false); // Hide after response
 
       if (data.message) {
         alert("Signup successful! Please login.");
-        navigate("/");
+        navigate("/login");
       } else {
         alert(data.error || "Signup failed");
       }
     } catch (error) {
+      setLoading(false);
       alert(error.message);
     }
   };
+
+  if (loading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div className="signup-container">

@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { loginUserApi } from "../services/api";
 import "../stylesheets/Login.css";
 import { UserContext } from "../context/UserContext";
+import LoadingScreen from "../components/LoadingScreen";
 
 const Login = () => {
-  const { setUser } = useContext(UserContext);
+  const { setUser, setLoading, loading } = useContext(UserContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,20 +16,30 @@ const Login = () => {
     e.preventDefault();
 
     try {
+      setLoading(true); // You'll need this from context
       const data = await loginUserApi(email, password);
 
       if (data.token) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("user", JSON.stringify(data.user));
+
         setUser(data.user);
+        setLoading(false);
+
         navigate("/dashboard");
       } else {
+        setLoading(false);
         alert(data.error || "Login failed");
       }
     } catch (error) {
+      setLoading(false);
       alert(error.message);
     }
   };
+
+  if (loading) {
+    return <LoadingScreen />; // ✅ Show loading screen during login
+  }
 
   return (
     <div className="login-container">
