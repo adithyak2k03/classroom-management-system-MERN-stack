@@ -13,7 +13,7 @@ The **Classroom Management System** is a **MERN stack** web application designed
 ✅ **Notes and To-Do List** applications for students  
 ✅ **Admin dashboard** for managing students  
 ✅ **View, Add, Edit, Delete all users data, notes and tasks**  
-<!---✅ **Responsive and user-friendly UI**->  
+<!---✅ **Responsive and user-friendly UI**-->  
 
 ---
 
@@ -39,34 +39,17 @@ The **Classroom Management System** is a **MERN stack** web application designed
 - **Backend:** Render  
 
 ---
-<!---
+
 ## 📸 Screenshots  
 
 1️⃣ **Home Page** – Shows login/signup options.  
-   ![Home Page](./screenshots/homepage.png)  
+   ![Home Page](./screenshots/homepage.png) 
 
-2️⃣ **Login Page** – User authentication.  
-   ![Login Page](./screenshots/login.png)  
+🔗 [See More](/screenshots)  
 
-3️⃣ **User Dashboard** – Displays options like Notes & To-Do List.  
-   ![User Dashboard](./screenshots/user-dashboard.png)  
-
-4️⃣ **Admin Panel** – Overview of all users.  
-   ![Admin Panel](./screenshots/admin-panel.png)  
-
-5️⃣ **Add User Modal** – Popup form to add a new user.  
-   ![Add User Modal](./screenshots/add-user-modal.png)  
-
-6️⃣ **Edit User Modal** – Form to edit user details.  
-   ![Edit User Modal](./screenshots/edit-user-modal.png)  
-
-7️⃣ **Delete Confirmation Modal** – Prompt before deleting a user.  
-   ![Delete Modal](./screenshots/delete-modal.png)  
-
-_(Save your screenshots in a `screenshots/` folder in the repo and replace the placeholder paths above.)_  
 
 ---
--->
+
 
 ## ⚡ Installation & Setup  
 
@@ -93,10 +76,6 @@ cd backend
 npm install
 ```
 
-```sh
-cd ..
-npm run both
-```
 ### 3️⃣ Environment Variables  
 
 Create a `.env` file in the `backend` folder and add:  
@@ -105,18 +84,27 @@ Create a `.env` file in the `backend` folder and add:
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret_key
 ```
+### 4️⃣ Run Code  
+This  starts both frontend and backend using Concurrently
+
+```sh
+cd ..
+npm run both
+```
 
 ---
 
 ## 🌍 Live Demo  
 
-🔗 **Frontend and Backend:** [https://classroom-management-system-mern-stack.vercel.app/](#)  
+🔗 **Frontend and Backend:** [https://classroom-management-system-mern-stack.vercel.app/](https://classroom-management-system-mern-stack.vercel.app/)  
 
 _(Replace `#` with actual deployed links.)_  
 
 ---
 
 ## 🔥 Test User Details
+
+Use these login details to see the workings of the project
 
 Username: takeshi.nakamura.ee@univ.edu
 Password: mypassword123
@@ -133,6 +121,13 @@ Password: mypassword123
 🗓️ **Additional integrations** (Calendar, Chat system) 
 
 ---
+## Todo list
+
+- **Add a loading bar in login page / signup page since first api hit is taking time.**
+- **Chat System (either live-only chat free for all temporary type // or user based chat application with stored permanent chats)**
+- **Integrate other applications i did here (like car game highway havoc, chat application**
+- **Add file storage aswell( bit more work since it requires Cloud storage and have to get permanent free ones)**
+
 
 
 ## 💡 Contributing  
