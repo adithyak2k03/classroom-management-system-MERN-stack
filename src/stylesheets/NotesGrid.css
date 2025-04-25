@@ -49,9 +49,15 @@
   flex-grow: 1;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: pre-wrap;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+}
+
+.note-card .card-tag {
+  background: rgb(247, 190, 77);
+  width: max-content;
 }
 
 .note-card .card-footer {
@@ -85,6 +91,50 @@
 
 .note-card .btn-danger:hover {
   background-color: #722c2c;
+}
+
+.modal-content {
+  max-height: 80vh;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  text-align: unset !important;
+}
+
+.modal-header-with-copy {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+.copy-icon {
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #4d3a28;
+  transition: color 0.3s ease;
+}
+
+.copy-icon:hover {
+  color: #8d3e3e;
+}
+
+.copy-toast {
+  font-size: 0.9rem;
+  color: green;
+  margin-top: 5px;
+  animation: fadeOut 1.5s forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 body.dark-mode .notes-grid {
@@ -130,6 +180,10 @@ body.dark-mode .note-card .btn-danger {
   }
 
   .note-card .card-text {
+    font-size: 0.9em;
+  }
+
+  .note-card .card-tag {
     font-size: 0.9em;
   }
 
