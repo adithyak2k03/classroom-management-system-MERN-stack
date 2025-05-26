@@ -112,14 +112,14 @@ Password: mypassword123
 Admin Username: alexander.miller.engfarm@univ.edu
 Password: mypassword123
 
---
+---
 
 ## 🛠 Development Log
 
 Curious about how this project was built step by step?  
 Check out the [Project Build Log](./Dev_log.md).
 
---
+---
 
 ## 🔥 Future Improvements  
 
