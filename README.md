@@ -114,6 +114,13 @@ Password: mypassword123
 
 --
 
+## 🛠 Development Log
+
+Curious about how this project was built step by step?  
+Check out the [Project Build Log](./Dev_log.md).
+
+--
+
 ## 🔥 Future Improvements  
 
 🚀 **More Role-based access control**  
